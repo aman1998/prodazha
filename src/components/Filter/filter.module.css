@@ -1,0 +1,28 @@
+.form {
+    display: flex;
+    margin-left: 100px;
+}
+
+.form input, .form button {
+    height: 35px;
+    outline: none;
+    border: none;
+}
+
+.form input {
+    padding: 0 10px;
+    width: 250px;
+    border-radius: 10px 0 0 10px;
+}
+
+.form button {
+    background: #2fbdb4;background: #2fbdb4;
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+    transition: .5s;
+    padding: 0 10px;
+}
+
+.form button:hover {
+    background: #2fbdb3d0;
+}

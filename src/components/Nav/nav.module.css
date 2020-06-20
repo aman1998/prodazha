@@ -1,0 +1,53 @@
+header {
+    padding-top: 20px;
+    background: #3b5998;
+    color: #fff;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 2px 2px 5px rgb(114, 106, 106);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu li {
+    margin-right: 10px;
+    transition: 0.5s;
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+}
+
+.category li {
+    margin: 30px 10px;
+    transition: 0.5s;
+}
+
+.menu li:hover, .category li:hover {
+    opacity: .9;
+}
+
+.add {
+    padding: 5px 10px;
+    background: #2fbdb4;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+.add:hover {
+    background: #2fbdb3d0;
+    opacity: 1;
+}

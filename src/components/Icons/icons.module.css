@@ -1,0 +1,18 @@
+.search {
+    width: 15px;
+    height: 15px;
+    fill: #fff;
+}
+
+.cancel {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.cancel:hover {
+    fill: #305996d0;
+}
