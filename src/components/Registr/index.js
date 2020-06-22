@@ -20,8 +20,8 @@ const handleSignin = (e) => {
         if (!response.ok) throw response.status
         return response.json()
     })
-    .then(({ user }) => {
-        window.localStorage.setItem('token', user.token)
+    .then((data) => {
+        // window.localStorage.setItem('user', data.user)
     })
     .catch(() => {
         setError('Неизвестная ошибка')

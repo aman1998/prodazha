@@ -3,11 +3,12 @@ import { NavLink } from 'react-router-dom'
 import styles from './nav.module.css'
 import Filter from '../Filter'
 import Search from '../Icons/search'
+import { connect } from 'react-redux'
+import { showLogin } from '../../store/actions'
 
-const Nav = () => {
+const Nav = ({changeLogin}) => {
     const menuItem = [
         { id: 1, link: '/', text: 'Главное' },
-        { id: 2, link: '/login', text: 'Вход' },
         { id: 3, link: '/profile', text: 'Личный кабинет' },
     ]
 
@@ -48,6 +49,7 @@ const Nav = () => {
                                     </li>
                                 ))
                             }
+                            <li><div style={{cursor:'pointer'}} onClick={() => changeLogin(true)}>Вход</div></li>
                         </ul>
                     </nav>
                 </div>
@@ -76,4 +78,12 @@ const Nav = () => {
     )
 }
 
-export default Nav
+const mapStateToProps = (state) => ({
+    login: state.login
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    changeLogin: (login) => dispatch(showLogin(login))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav)
