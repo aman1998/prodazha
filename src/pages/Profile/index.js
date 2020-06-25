@@ -2,18 +2,20 @@ import React from 'react'
 import PageTemplate from '../../components/pageTemplate'
 import Login from '../../pages/Login'
 import { connect } from 'react-redux'
-import { showLogin } from '../../store/actions'
-import { showProfile } from '../../store/actions'
+import { showProfile, showLogin, changeField } from '../../store/actions.js'
 import styles from './profile.module.css'
 import { Redirect } from 'react-router-dom'
 
-let Profile = ({login, profile, changeProfile}) => {
+
+let Profile = ({login, profile, changeProfile, firstname, lastname, username, changeValue}) => {
     const [redirect, setRedirect] = React.useState(false)
-    
+
     React.useEffect(() => {
-        
+            changeValue('firstname', localStorage.getItem('firstname'))
+            changeValue('lastname', localStorage.getItem('lastname'))
+            changeValue('username', localStorage.getItem('username'))
     }, [])
-    
+
     const deleteUser = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('firstname')
@@ -23,6 +25,8 @@ let Profile = ({login, profile, changeProfile}) => {
         setRedirect(true)
         changeProfile(false)
     }
+    
+
 return(
     <PageTemplate>
         <div className={`container`}>
@@ -32,9 +36,9 @@ return(
                 <div className={styles.profile}>
                     <div className={styles.avatar}></div>
                     <div className={styles.info}>
-                        <div>Имя: {localStorage.getItem('firstname')}</div>
-                        <div>Фамилия: {localStorage.getItem('lastname')}</div>
-                        <div>Логин: {localStorage.getItem('username')}</div>
+                        <div>Имя: {firstname}</div>
+                        <div>Фамилия: {lastname}</div>
+                        <div>Логин: {username}</div>
                     </div>
                 </div>
                 <button className={styles.signOut} onClick={deleteUser}>Выйти</button>
@@ -49,12 +53,17 @@ return(
 
 const mapStateToProps = (state) => ({
     login: state.login,
-    profile: state.profile
+    profile: state.profile,
+    profiles: state.profiles,
+    username: state.profiles.username,
+    lastname: state.profiles.lastname,
+    firstname: state.profiles.firstname,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     changeLogin: (login) => dispatch(showLogin(login)),
-    changeProfile: (profile) => dispatch(showProfile(profile))
+    changeProfile: (profiles) => dispatch(showProfile(profiles)),
+    changeValue: (fieldName, value) => dispatch(changeField('profiles', fieldName, value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

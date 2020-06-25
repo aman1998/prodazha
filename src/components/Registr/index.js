@@ -1,10 +1,8 @@
 import React from 'react'
+import { changeField } from '../../store/actions'
+import { connect } from 'react-redux'
 
-let Registr = () => {
-const [firstname, setFirstname] = React.useState('')
-const [lastname, setLastname] = React.useState('')
-const [username, setUsername] = React.useState('')
-const [password, setPassword] = React.useState('')
+let Registr = ({firstname, lastname, username, password, changeValue}) => {
 const [error, setError] = React.useState('')
 
 const handleSignin = (e) => {
@@ -32,25 +30,25 @@ return (
     <div className='container'>
         <input
         value={firstname}
-        onChange={(e) => setFirstname(e.target.value)}
+        onChange={(e) => changeValue("firstname", e.target.value)}
         placeholder="Имя"
         type="text"
         />
         <input
         value={lastname}
-        onChange={(e) => setLastname(e.target.value)}
+        onChange={(e) => changeValue("lastname", e.target.value)}
         type="text"
         placeholder="Фамилия"
         />
         <input
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => changeValue("username", e.target.value)}
         type="text"
         placeholder="Никнейм"
         />
         <input
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => changeValue("password", e.target.value)}
         type="text"
         placeholder="Пароль"
         />
@@ -65,4 +63,15 @@ return (
 )
 }
 
-export default Registr
+const mapStateToProps = (state) => ({
+    firstname: state.registr.firstname,
+    lastname: state.registr.lastname,
+    username: state.registr.username,
+    password: state.registr.password,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    changeValue: (fieldName, value) => dispatch(changeField('registr', fieldName, value))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registr)

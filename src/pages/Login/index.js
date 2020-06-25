@@ -24,12 +24,6 @@ return (
             <Cancel />
             {auth ? <Auth /> : <Registr />}
         </form>
-        {/* <button
-            type="button"
-            onClick={() => history.goBack()}
-        >
-            Назад
-        </button> */}
     </div>
 )
 }

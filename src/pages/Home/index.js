@@ -5,11 +5,10 @@ import Login from '../../pages/Login'
 import { connect } from 'react-redux'
 import { showLogin } from '../../store/actions'
 
-const endpoint = 'http://localhost:5432'
+// const endpoint = 'http://localhost:5432'
 
-let Home = ({login}) => {
-const [hiddenText, setHiddenText] = React.useState('')
-const [error, setError] = React.useState('')
+let Home = ({login, addList}) => {
+// const [error, setError] = React.useState('')
 
 // React.useEffect(() => {
 //     fetch(`${endpoint}/login`, {
@@ -39,7 +38,12 @@ const [error, setError] = React.useState('')
 return (
     <PageTemplate>
         <div className='container'>
-        Главная страница
+            { addList.map(list => (
+                <div key={list.title}>
+                    <h2>{list.title}</h2>
+                    <p>{list.price}</p>
+                </div>
+            ))}
         </div>
         {login ? <Login /> : null}
     </PageTemplate>
@@ -47,7 +51,8 @@ return (
 }
 
 const mapStateToProps = (state) => ({
-    login: state.login
+    login: state.login,
+    addList: state.list.addList
 })
 
 const mapDispatchToProps = (dispatch) => ({

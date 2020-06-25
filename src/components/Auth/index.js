@@ -1,12 +1,9 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { showProfile } from '../../store/actions'
-import { showLogin } from '../../store/actions'
+import { showProfile, showLogin, changeField } from '../../store/actions.js'
 
-let Auth = ({profile, login, changeProfile, changeLogin}) => {
-const [username, setUsername] = React.useState('')
-const [password, setPassword] = React.useState('')
+let Auth = ({profile, changeProfile, changeLogin, username, password, changeValue}) => {
 const [error, setError] = React.useState('')
 
 const handleLogin = (e) => {
@@ -42,13 +39,13 @@ return (
             <div>
                 <input
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => changeValue('username', e.target.value)}
                 type="text"
                 placeholder='Никнейм'
                 />
                 <input
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => changeValue('password', e.target.value)}
                 type="text"
                 placeholder='Пароль'
                 />
@@ -69,11 +66,14 @@ return (
 const mapStateToProps = (state) => ({
     profile: state.profile,
     login: state.login,
+    username: state.auth.username,
+    password: state.auth.password,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     changeLogin: (login) => dispatch(showLogin(login)),
     changeProfile: (profile) => dispatch(showProfile(profile)),
+    changeValue: (fieldName, value) => dispatch(changeField('auth', fieldName, value)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth)
