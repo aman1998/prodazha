@@ -5,11 +5,7 @@ import Login from '../../pages/Login'
 import { connect } from 'react-redux'
 import { showProfile, changeField} from '../../store/actions.js'
 
-let Add = ({profile, login, title, price, addList, changeValue}) => {
-    // const [title, setTitle] = React.useState('')
-    // const [price, setPrice] = React.useState('')
-    // const [addList, setList] = React.useState([])
-
+let Add = ({profile, login, title, price, changeValue}) => {
     const handleAdd = (e) => {
         e.preventDefault()
         const newAddList = {
@@ -18,7 +14,15 @@ let Add = ({profile, login, title, price, addList, changeValue}) => {
         }
         changeValue('title', '')
         changeValue('price', '')
-        changeValue('addList', [ ...addList, newAddList ])
+        fetch('http://localhost:3030/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newAddList),
+        })
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => console.log(data))
     }
 
     return(
@@ -53,7 +57,6 @@ const mapStateToProps = (state) => ({
     login: state.login,
     title: state.list.title,
     price: state.list.price,
-    addList: state.list.addList,
 })
 
 const mapDispatchToProps = (dispatch) => ({

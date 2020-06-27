@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { showProfile, showLogin, changeField } from '../../store/actions.js'
 import styles from './profile.module.css'
 import { Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 let Profile = ({login, profile, changeProfile, firstname, lastname, username, changeValue}) => {
@@ -42,6 +43,9 @@ return(
                     </div>
                 </div>
                 <button className={styles.signOut} onClick={deleteUser}>Выйти</button>
+                <button>
+                    <NavLink to='/add' exact>Добавить объявление</NavLink>
+                </button>
             </div>:
             'Вы не авторизированы'}
         </div>
