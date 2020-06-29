@@ -8,9 +8,15 @@ export const showProfile = (profile) => ({
     profile,
 })
 
+export const showSearchResult = (search) => ({
+    type: 'SHOW_SEARCH_RESULT',
+    search,
+})
+
 export const changeField = (formName, fieldName, value) => ({
     type: 'CHANGE_FIELD',
     formName, 
     fieldName, 
     value
 })
+

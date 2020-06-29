@@ -15,7 +15,7 @@ let Profile = ({login, profile, changeProfile, firstname, lastname, username, ch
             changeValue('firstname', localStorage.getItem('firstname'))
             changeValue('lastname', localStorage.getItem('lastname'))
             changeValue('username', localStorage.getItem('username'))
-    }, [])
+    }, [changeValue])
 
     const deleteUser = () => {
         localStorage.removeItem('token')

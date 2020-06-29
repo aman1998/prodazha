@@ -1,8 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './nav.module.css'
-import Filter from '../Filter'
-import Search from '../Icons/search'
+import Search from '../Search'
 import { connect } from 'react-redux'
 import { showLogin } from '../../store/actions'
 
@@ -25,7 +24,7 @@ const Nav = ({changeLogin}) => {
             <div className='container'>
                 <div className={styles['header__menu']}>
                     <div className={styles.title}>Amangeldi</div>
-                    <Filter />
+                    <Search />
                     <nav>
                         <ul className={styles.menu}>
                             <li>

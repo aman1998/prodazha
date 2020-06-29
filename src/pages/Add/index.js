@@ -4,13 +4,16 @@ import PageTemplate from '../../components/pageTemplate'
 import Login from '../../pages/Login'
 import { connect } from 'react-redux'
 import { showProfile, changeField} from '../../store/actions.js'
+import Category from '../../components/Forms/category'
+import AddList from '../../components/Forms/addList'
 
-let Add = ({profile, login, title, price, changeValue}) => {
+let Add = ({profile, login, title, price, category, changeValue}) => {
     const handleAdd = (e) => {
         e.preventDefault()
         const newAddList = {
             title,
-            price
+            price,
+            category,
         }
         changeValue('title', '')
         changeValue('price', '')
@@ -30,18 +33,9 @@ let Add = ({profile, login, title, price, changeValue}) => {
             <div className='container'>
                 {profile ?
                     <form>
-                        <input 
-                        type="text" 
-                        placeholder="Название" 
-                        value={title}
-                        onChange={(e) => changeValue('title', e.target.value)}
-                        />
-                        <input
-                        placeholder="Цена" 
-                        value={price}
-                        onChange={(e) => changeValue('price', e.target.value)}
-                        />
-                        <button onClick={handleAdd}>Добавить</button>
+                        <Category />
+                        <AddList />
+                        <button onClick={handleAdd} type='submit'>Добавить</button>
                     </form> :
                     'Чтобы добавить объявление надо авторизироваться'
                 }
@@ -57,6 +51,7 @@ const mapStateToProps = (state) => ({
     login: state.login,
     title: state.list.title,
     price: state.list.price,
+    category: state.list.category,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,11 +1,10 @@
 import React from 'react'
 import PageTemplate from '../../components/pageTemplate'
-import style from './home.module.css'
 import Login from '../../pages/Login'
 import { connect } from 'react-redux'
 import { showLogin, changeField } from '../../store/actions'
 
-let Home = ({login, addList, changeValue}) => {
+let Household = ({login, addList, changeValue}) => {
     // const [error, setError] = React.useState('')
 
 React.useEffect(() => {
@@ -23,11 +22,13 @@ return (
     <PageTemplate>
         <div className='container'>
             { addList.map(list => (
+                list.category === 'Недвижимость' ?
                 <div key={list.id}>
                     <h2>{list.title}</h2>
                     <p>{list.price}</p>
                     <p>{list.category}</p>
-                </div>
+                </div> :
+                null
             ))}
         </div>
         {login ? <Login /> : null}
@@ -45,4 +46,4 @@ const mapDispatchToProps = (dispatch) => ({
     changeValue: (fieldName, value) => dispatch(changeField('list', fieldName, value)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Household)

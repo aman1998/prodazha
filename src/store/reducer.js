@@ -1,6 +1,7 @@
 const initilalState = {
     login: false,
-    profile: false,
+    profile: true,
+    search: '',
     auth: {
         username: '',
         password: '',
@@ -19,8 +20,9 @@ const initilalState = {
     list: {
         title: '',
         price: '',
+        category: '',
         addList: [],
-    }
+    },
 }
 
 const reducer = (state = initilalState, action) => {
@@ -34,6 +36,11 @@ const reducer = (state = initilalState, action) => {
         return{
             ...state,
             profile: action.profile
+        }
+        case "SHOW_SEARCH_RESULT":
+        return{
+            ...state,
+            search: action.search
         }
         case 'CHANGE_FIELD': 
             return{

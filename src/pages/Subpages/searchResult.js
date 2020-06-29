@@ -1,11 +1,10 @@
 import React from 'react'
 import PageTemplate from '../../components/pageTemplate'
-import style from './home.module.css'
 import Login from '../../pages/Login'
 import { connect } from 'react-redux'
 import { showLogin, changeField } from '../../store/actions'
 
-let Home = ({login, addList, changeValue}) => {
+let SearchResult = ({login, search, addList, changeValue}) => {
     // const [error, setError] = React.useState('')
 
 React.useEffect(() => {
@@ -18,16 +17,16 @@ React.useEffect(() => {
     })
 }, [changeValue])
 
-
 return (
     <PageTemplate>
         <div className='container'>
-            { addList.map(list => (
-                <div key={list.id}>
+            {addList.map(list => (
+                search === list.title ? <div key={list.id}>
                     <h2>{list.title}</h2>
                     <p>{list.price}</p>
                     <p>{list.category}</p>
-                </div>
+                </div> :
+                null
             ))}
         </div>
         {login ? <Login /> : null}
@@ -37,7 +36,8 @@ return (
 
 const mapStateToProps = (state) => ({
     login: state.login,
-    addList: state.list.addList
+    addList: state.list.addList,
+    search: state.search,
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -45,4 +45,4 @@ const mapDispatchToProps = (dispatch) => ({
     changeValue: (fieldName, value) => dispatch(changeField('list', fieldName, value)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResult)
