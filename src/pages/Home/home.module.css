@@ -1,0 +1,38 @@
+.wrapper{
+    display: grid;
+    padding: 20px 0;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 10px;
+}
+
+.block {
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid rgb(12, 11, 11);
+    /* height: 250px; */
+    /* background: gray; */
+}
+
+.img {
+    width: 100%;
+    height: 100px;
+    background: rgb(136, 128, 128);
+}
+
+.icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.icons div:nth-child(1) {
+    display: flex;
+}
+
+.message {
+    margin-left: 5px;
+}
+

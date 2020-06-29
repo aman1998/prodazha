@@ -4,6 +4,12 @@
     fill: #fff;
 }
 
+.heart, .message, .user {
+    width: 20px;
+    height: 20px;
+    fill: rgb(143, 130, 130);
+}
+
 .cancel {
     position: absolute;
     top: 15px;
@@ -15,4 +21,16 @@
 
 .cancel:hover {
     fill: #305996d0;
+}
+
+.heart:hover{
+    fill: rgba(219, 24, 24, 0.89);
+}
+
+.message:hover{
+    fill: rgb(102, 214, 49);
+}
+
+.user:hover{
+    fill: rgb(49, 74, 214);
 }

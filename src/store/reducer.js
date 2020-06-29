@@ -1,6 +1,6 @@
 const initilalState = {
     login: false,
-    profile: true,
+    profile: false,
     search: '',
     auth: {
         username: '',
