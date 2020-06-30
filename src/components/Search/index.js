@@ -6,12 +6,10 @@ import { changeField, showSearchResult } from '../../store/actions'
 import { Redirect } from 'react-router-dom'
 
 let Filter = ({ searchList, search }) => {
-    const [redirect, setRedirect] = React.useState(false)
 
     const handleFilter = (e) => {
         e.preventDefault()
         const filter = e.target.elements.list.value
-        setRedirect(true)
         searchList(filter)
     }
     return(
@@ -20,7 +18,6 @@ let Filter = ({ searchList, search }) => {
                 <input type='text' placeholder='название товара' name='list' value={search} onChange={(e) => searchList(e.target.value)}/>
                 <button><SearchIcon /></button>
             </form>
-            {redirect ? <Redirect to ='/searchResult'/> : null}
         </div>
     )
 }

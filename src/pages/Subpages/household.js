@@ -26,7 +26,7 @@ return (
     <PageTemplate>
         <div className={`container ${styles.wrapper}`}>
             { addList.map(list => (
-                list.category === 'Недвижимость' ?
+                list.category === 'Все для дома' ?
                 <div key={list.id} className={styles.block}>
                     <img className={styles.img} />
                     <p>{`${list.price} сом`}</p>

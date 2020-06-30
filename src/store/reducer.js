@@ -16,6 +16,8 @@ const initilalState = {
         firstname: '',
         lastname: '',
         username: '',
+        token: '',
+        profilesList: []
     },
     list: {
         title: '',

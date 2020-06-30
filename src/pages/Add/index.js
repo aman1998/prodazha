@@ -7,7 +7,7 @@ import { showProfile, changeField} from '../../store/actions.js'
 import Category from '../../components/Forms/category'
 import AddList from '../../components/Forms/addList'
 
-let Add = ({profile, login, title, price, category, changeValue}) => {
+let Add = ({profile, login, token, title, price, category, changeValue}) => {
     const handleAdd = (e) => {
         e.preventDefault()
         const newAddList = {
@@ -31,7 +31,13 @@ let Add = ({profile, login, title, price, category, changeValue}) => {
     return(
         <PageTemplate>
             <div className='container'>
-                {profile ?
+                <h1>Upload file</h1>
+                <form action="./upload" method="post" encType="multipart/form-data">
+                    <label>Файл</label>
+                    <input type="file" name="filedata" />
+                    <input type="submit" value="Send" />
+                </form>
+                {token ?
                     <form>
                         <Category />
                         <AddList />
@@ -52,6 +58,7 @@ const mapStateToProps = (state) => ({
     title: state.list.title,
     price: state.list.price,
     category: state.list.category,
+    token: state.profiles.token,
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -9,7 +9,6 @@ import Household from './pages/Subpages/household'
 import Clothing from './pages/Subpages/clothing'
 import Cars from './pages/Subpages/cars'
 import Property from './pages/Subpages/property'
-import SearchResult from './pages/Subpages/searchResult'
 
 const App = () => {
   return (
@@ -24,7 +23,6 @@ const App = () => {
         <Route path='/clothes' component={Clothing} exact/>
         <Route path='/cars' component={Cars} exact/>
         <Route path='/property' component={Property} exact/>
-        <Route path='/searchResult' component={SearchResult} exact/>
       </Switch>
     </BrowserRouter>
   )

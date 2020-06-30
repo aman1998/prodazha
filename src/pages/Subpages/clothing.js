@@ -28,17 +28,17 @@ return (
             { addList.map(list => (
                 list.category === 'Одежда' ?
                 <div key={list.id} className={styles.block}>
-                <img className={styles.img} />
-                <p>{`${list.price} сом`}</p>
-                <div>{list.title}</div>
-                <div className={styles.icons}>
-                    <div>
-                        <div className={styles.user}><User /></div>
-                        <div className={styles.message}><Message /></div>
+                    <img className={styles.img} />
+                    <p>{`${list.price} сом`}</p>
+                    <div>{list.title}</div>
+                    <div className={styles.icons}>
+                        <div>
+                            <div className={styles.user}><User /></div>
+                            <div className={styles.message}><Message /></div>
+                        </div>
+                        <div className={styles.heart}><Heart /></div>
                     </div>
-                    <div className={styles.heart}><Heart /></div>
-                </div>
-            </div> :
+                </div> :
                 null
             ))}
         </div>

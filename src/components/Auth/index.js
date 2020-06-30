@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { showProfile, showLogin, changeField } from '../../store/actions.js'
 
-let Auth = ({profile, changeProfile, changeLogin, username, password, changeValue}) => {
+let Auth = ({profile, token, changeProfile, changeLogin, username, password, changeValue}) => {
 const [error, setError] = React.useState('')
 
 const handleLogin = (e) => {
@@ -19,10 +19,6 @@ const handleLogin = (e) => {
     })
     .then(({user}) => {
         window.localStorage.setItem('token', user.token)
-        window.localStorage.setItem('firstname', user.data.firstname)
-        window.localStorage.setItem('lastname', user.data.lastname)
-        window.localStorage.setItem('username', user.data.username)
-        window.localStorage.setItem('password', user.data.password)
         changeProfile(true)
         changeLogin(false)
     })
@@ -35,7 +31,7 @@ const handleLogin = (e) => {
 return (
     <div>
         {
-            profile ? 'Вы уже авторизированы' : 
+            token ? 'Вы уже авторизированы' : 
             <div>
                 <input
                 value={username}
@@ -68,6 +64,7 @@ const mapStateToProps = (state) => ({
     login: state.login,
     username: state.auth.username,
     password: state.auth.password,
+    token: state.profiles.token,
 })
 
 const mapDispatchToProps = (dispatch) => ({

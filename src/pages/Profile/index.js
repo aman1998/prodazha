@@ -8,21 +8,26 @@ import { Redirect } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 
 
-let Profile = ({login, profile, changeProfile, firstname, lastname, username, changeValue}) => {
+let Profile = ({login, token, profile, changeProfile, profilesList, changeValue}) => {
     const [redirect, setRedirect] = React.useState(false)
 
     React.useEffect(() => {
-            changeValue('firstname', localStorage.getItem('firstname'))
-            changeValue('lastname', localStorage.getItem('lastname'))
-            changeValue('username', localStorage.getItem('username'))
-    }, [changeValue])
+        const getToken = localStorage.getItem('token')
+        changeValue('token', getToken)
+        fetch('http://localhost:5432/data')
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            changeValue('profilesList', data)
+        })
+            // changeValue('firstname', localStorage.getItem('firstname'))
+            // changeValue('lastname', localStorage.getItem('lastname'))
+            // changeValue('username', localStorage.getItem('username'))
+    }, [changeValue, changeProfile])
 
     const deleteUser = () => {
         localStorage.removeItem('token')
-        localStorage.removeItem('firstname')
-        localStorage.removeItem('lastname')
-        localStorage.removeItem('password')
-        localStorage.removeItem('username')
         setRedirect(true)
         changeProfile(false)
     }
@@ -31,16 +36,21 @@ let Profile = ({login, profile, changeProfile, firstname, lastname, username, ch
 return(
     <PageTemplate>
         <div className={`container`}>
-            {profile ? 
+            {token ? 
             <div>
                 <div>Мой профиль</div>
                 <div className={styles.profile}>
-                    <div className={styles.avatar}></div>
-                    <div className={styles.info}>
-                        <div>Имя: {firstname}</div>
-                        <div>Фамилия: {lastname}</div>
-                        <div>Логин: {username}</div>
-                    </div>
+                    {profilesList.map((list) => (
+                        token === list.token ?
+                        <div key={list.token}>
+                            <div className={styles.avatar}></div>
+                            <div className={styles.info}>
+                                <div>Имя: {list.data.firstname}</div>
+                                <div>Фамилия: {list.data.lastname}</div>
+                                <div>Логин: {list.data.username}</div>
+                            </div>
+                        </div> : null
+                    ))}
                 </div>
                 <button className={styles.signOut} onClick={deleteUser}>Выйти</button>
                 <button>
@@ -62,6 +72,8 @@ const mapStateToProps = (state) => ({
     username: state.profiles.username,
     lastname: state.profiles.lastname,
     firstname: state.profiles.firstname,
+    token: state.profiles.token,
+    profilesList: state.profiles.profilesList,
 })
 
 const mapDispatchToProps = (dispatch) => ({

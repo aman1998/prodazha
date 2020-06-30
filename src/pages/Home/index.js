@@ -9,7 +9,6 @@ import Message from '../../components/Icons/message'
 import User from '../../components/Icons/user'
 
 let Home = ({login, addList, changeValue}) => {
-
     // const [error, setError] = React.useState('')
     const search = useSelector(state => state.search)
 
