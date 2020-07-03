@@ -2,10 +2,10 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styles from './nav.module.css'
 import Search from '../Search'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { showLogin } from '../../store/actions'
 
-const Nav = ({changeLogin}) => {
+const Nav = () => {
     const menuItem = [
         { id: 1, link: '/', text: 'Главное' },
         { id: 3, link: '/profile', text: 'Личный кабинет' },
@@ -18,6 +18,14 @@ const Nav = ({changeLogin}) => {
         { id: 4, link: '/cars', text: 'Автомобиль' },
         { id: 5, link: '/property', text: 'Недвижимость' },
     ]
+
+    // const {login} = useSelector(state => ({
+    //     login: state.login
+    // }))
+
+    const dispatch = useDispatch()
+    const changeLogin = (login) => dispatch(showLogin(login))
+
 
     return(
         <header>
@@ -77,12 +85,4 @@ const Nav = ({changeLogin}) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    login: state.login
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    changeLogin: (login) => dispatch(showLogin(login))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default Nav

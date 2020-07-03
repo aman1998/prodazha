@@ -1,17 +1,24 @@
 import React from 'react'
 import SearchIcon from '../Icons/search'
 import styles from './filter.module.css'
-import { connect } from 'react-redux'
-import { changeField, showSearchResult } from '../../store/actions'
-import { Redirect } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { showSearchResult } from '../../store/actions'
+// import { Redirect } from 'react-router-dom'
 
-let Filter = ({ searchList, search }) => {
+let Filter = () => {
+    const {search} = useSelector(state => ({
+        search: state.search,
+    }))
+
+    const dispatch = useDispatch()
+    const searchList = (search) => dispatch(showSearchResult(search))
 
     const handleFilter = (e) => {
         e.preventDefault()
         const filter = e.target.elements.list.value
         searchList(filter)
     }
+
     return(
         <div>
             <form className={styles.form} onSubmit={handleFilter}>
@@ -22,13 +29,4 @@ let Filter = ({ searchList, search }) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    title: state.list.title,
-    search: state.search
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    searchList: (search) => dispatch(showSearchResult(search)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filter)
+export default Filter

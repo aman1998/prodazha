@@ -1,7 +1,7 @@
 import React from 'react'
 import PageTemplate from '../../components/pageTemplate'
 import Login from '../../pages/Login'
-import { connect } from 'react-redux'
+import { connect, useSelector, useDispatch } from 'react-redux'
 import { showProfile, showLogin, changeField } from '../../store/actions.js'
 import styles from './profile.module.css'
 import { Redirect } from 'react-router-dom'
@@ -10,6 +10,19 @@ import { NavLink } from 'react-router-dom'
 
 let Profile = ({login, token, profile, changeProfile, profilesList, changeValue}) => {
     const [redirect, setRedirect] = React.useState(false)
+
+    // const {login, token, profile, profiles, profilesList } = useSelector(state => ({
+    //     login: state.login,
+    //     profile: state.profile,
+    //     profiles: state.profiles,
+    //     token: state.profiles.token,
+    //     profilesList: state.profiles.profilesList,
+    // }))
+
+    // const dispatch = useDispatch()
+    // const changeLogin = (login) => dispatch(showLogin(login))
+    // const changeProfile = (profiles) => dispatch(showProfile(profiles))
+    // const changeValue = (fieldName, value) => dispatch(changeField('profiles', fieldName, value))
 
     React.useEffect(() => {
         const getToken = localStorage.getItem('token')
@@ -21,9 +34,6 @@ let Profile = ({login, token, profile, changeProfile, profilesList, changeValue}
         .then(function (data) {
             changeValue('profilesList', data)
         })
-            // changeValue('firstname', localStorage.getItem('firstname'))
-            // changeValue('lastname', localStorage.getItem('lastname'))
-            // changeValue('username', localStorage.getItem('username'))
     }, [changeValue, changeProfile])
 
     const deleteUser = () => {
@@ -69,9 +79,6 @@ const mapStateToProps = (state) => ({
     login: state.login,
     profile: state.profile,
     profiles: state.profiles,
-    username: state.profiles.username,
-    lastname: state.profiles.lastname,
-    firstname: state.profiles.firstname,
     token: state.profiles.token,
     profilesList: state.profiles.profilesList,
 })

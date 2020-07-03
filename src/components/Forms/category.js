@@ -1,8 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { changeField } from '../../store/actions'
 
-let Add = ({ changeValue }) => {
+let Add = () => {
+    const dispatch = useDispatch()
+    const changeValue = (fieldName, value) => dispatch(changeField('list', fieldName, value))
+    
     return(
         <div>
             Выберете категорию 
@@ -18,12 +21,4 @@ let Add = ({ changeValue }) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    category: state.list.category,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    changeValue: (fieldName, value) => dispatch(changeField('list', fieldName, value))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Add)
+export default Add

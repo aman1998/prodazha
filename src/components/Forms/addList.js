@@ -1,8 +1,17 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { changeField} from '../../store/actions.js'
 
-let Add = ({title, price, changeValue}) => {
+let Add = () => {
+    const {login, title, price} = useSelector(state => ({
+        login: state.login,
+        title: state.list.title,
+        price: state.list.price,
+    }))
+
+    const dispatch = useDispatch()
+    const changeValue = (fieldName, value) => dispatch(changeField('list', fieldName, value))
+
     return(
         <div>
             <input 
@@ -20,14 +29,4 @@ let Add = ({title, price, changeValue}) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    login: state.login,
-    title: state.list.title,
-    price: state.list.price,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    changeValue: (fieldName, value) => dispatch(changeField('list', fieldName, value))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Add)
+export default Add

@@ -2,15 +2,23 @@ import React from 'react'
 import PageTemplate from '../../components/pageTemplate'
 import styles from './home.module.css'
 import Login from '../../pages/Login'
-import { connect, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { showLogin, changeField } from '../../store/actions'
 import Heart from '../../components/Icons/heart'
 import Message from '../../components/Icons/message'
 import User from '../../components/Icons/user'
 
-let Home = ({login, addList, changeValue}) => {
+let Home = () => {
     // const [error, setError] = React.useState('')
-    const search = useSelector(state => state.search)
+    const {search, login, addList} = useSelector(state => ({
+        search: state.search,
+        login: state.login,
+        addList: state.list.addList
+    }))
+
+    const dispatch = useDispatch()
+    const changeLogin = (login) => dispatch(showLogin(login))
+    const changeValue = (fieldName, value) => dispatch(changeField('list', fieldName, value))
 
 React.useEffect(() => {
     fetch('http://localhost:3030/list')
@@ -47,14 +55,4 @@ return (
 )
 }
 
-const mapStateToProps = (state) => ({
-    login: state.login,
-    addList: state.list.addList
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    changeLogin: (login) => dispatch(showLogin(login)),
-    changeValue: (fieldName, value) => dispatch(changeField('list', fieldName, value)),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default Home

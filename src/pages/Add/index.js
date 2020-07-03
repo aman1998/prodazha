@@ -2,12 +2,26 @@ import React from 'react'
 import styles from './add.module.css'
 import PageTemplate from '../../components/pageTemplate'
 import Login from '../../pages/Login'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { showProfile, changeField} from '../../store/actions.js'
 import Category from '../../components/Forms/category'
 import AddList from '../../components/Forms/addList'
 
-let Add = ({profile, login, token, title, price, category, changeValue}) => {
+let Add = () => {
+    const {profile, login, token, title, price, category} = useSelector(state => ({
+        profile: state.profile,
+        profiles: state.profiles,
+        login: state.login,
+        title: state.list.title,
+        price: state.list.price,
+        category: state.list.category,
+        token: state.profiles.token,
+    }))
+
+    const dispatch = useDispatch()
+    const changeProfile = (profile) => dispatch(showProfile(profile))
+    const changeValue = (fieldName, value) => dispatch(changeField('list', fieldName, value))
+
     const handleAdd = (e) => {
         e.preventDefault()
         const newAddList = {
@@ -31,12 +45,12 @@ let Add = ({profile, login, token, title, price, category, changeValue}) => {
     return(
         <PageTemplate>
             <div className='container'>
-                <h1>Upload file</h1>
+                {/* <h1>Upload file</h1>
                 <form action="./upload" method="post" encType="multipart/form-data">
                     <label>Файл</label>
                     <input type="file" name="filedata" />
                     <input type="submit" value="Send" />
-                </form>
+                </form> */}
                 {token ?
                     <form>
                         <Category />
@@ -51,19 +65,4 @@ let Add = ({profile, login, token, title, price, category, changeValue}) => {
     )
 }
 
-const mapStateToProps = (state) => ({
-    profile: state.profile,
-    profiles: state.profiles,
-    login: state.login,
-    title: state.list.title,
-    price: state.list.price,
-    category: state.list.category,
-    token: state.profiles.token,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    changeProfile: (profile) => dispatch(showProfile(profile)),
-    changeValue: (fieldName, value) => dispatch(changeField('list', fieldName, value))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Add)
+export default Add
