@@ -1,4 +1,5 @@
 header {
+    position: relative;
     padding-top: 20px;
     background: #3b5998;
     color: #fff;
@@ -8,6 +9,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .title {
@@ -29,6 +31,7 @@ header {
 .category {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .category li {

@@ -11,12 +11,16 @@ const initilalState = {
         lastname: '',
         username: '',
         password: '',
+        mail: '',
+        phone: '',
+        image: '',
+        isAdmin: false
     },
     profiles: {
-        firstname: '',
-        lastname: '',
-        username: '',
+        id: '',
         token: '',
+        profile: '',
+        favoritesList: [],
         profilesList: []
     },
     list: {

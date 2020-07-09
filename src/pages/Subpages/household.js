@@ -2,7 +2,7 @@ import React from 'react'
 import PageTemplate from '../../components/pageTemplate'
 import Login from '../../pages/Login'
 import { useSelector, useDispatch } from 'react-redux'
-import { showLogin, changeField } from '../../store/actions'
+import { changeField } from '../../store/actions'
 import Heart from '../../components/Icons/heart'
 import Message from '../../components/Icons/message'
 import User from '../../components/Icons/user'
@@ -17,10 +17,12 @@ let Household = () => {
     }))
 
     const dispatch = useDispatch()
-    const changeValue = (fieldName, value) => dispatch(changeField('list', fieldName, value))
+    const changeValue = React.useCallback((fieldName, value) => {
+        dispatch(changeField('list', fieldName, value))
+    }, [dispatch])
 
     React.useEffect(() => {
-        fetch('http://localhost:3030/list')
+        fetch('http://localhost:1717/list')
         .then(function (response) {
             return response.json()
         })

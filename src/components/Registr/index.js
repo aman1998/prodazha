@@ -5,11 +5,15 @@ import { useSelector, useDispatch } from 'react-redux'
 let Registr = () => {
     const [error, setError] = React.useState('')
 
-    const {firstname, lastname, username, password} = useSelector(state => ({
+    const {firstname, lastname, username, password, mail, phone, isAdmin, image} = useSelector(state => ({
         firstname: state.registr.firstname,
         lastname: state.registr.lastname,
         username: state.registr.username,
         password: state.registr.password,
+        mail: state.registr.mail,
+        phone: state.registr.phone,
+        isAdmin: state.registr.isAdmin,
+        image: state.registr.image,
     }))
 
     const dispatch = useDispatch()
@@ -17,9 +21,9 @@ let Registr = () => {
 
     const handleSignin = (e) => {
         e.preventDefault()
-        const body = { firstname, lastname, username, password }
-
-        fetch('http://localhost:5432/signin', {
+        const body = { firstname, lastname, username, password, phone, mail, image, isAdmin }
+        console.log(body)
+        fetch('http://localhost:1717/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -61,6 +65,18 @@ let Registr = () => {
             onChange={(e) => changeValue("password", e.target.value)}
             type="text"
             placeholder="Пароль"
+            />
+            <input
+            value={phone}
+            onChange={(e) => changeValue("phone", e.target.value)}
+            type="text"
+            placeholder="Телефон"
+            />
+            <input
+            value={mail}
+            onChange={(e) => changeValue("mail", e.target.value)}
+            type="text"
+            placeholder="Почта"
             />
             <button
             type="button"

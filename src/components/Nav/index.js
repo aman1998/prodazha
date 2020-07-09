@@ -29,7 +29,7 @@ const Nav = () => {
 
     return(
         <header>
-            <div className='container'>
+            <div className={`container ${styles['header__container']}`}>
                 <div className={styles['header__menu']}>
                     <div className={styles.title}>Amangeldi</div>
                     <Search />

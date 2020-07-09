@@ -1,6 +1,45 @@
+.profiles__container, .user__container {
+    width: 100%;
+    margin-top: 0;
+    padding-left: 10px;
+}
+
+.user__container {
+    padding: 0 5px;
+}
+
+.users {
+    display: grid;
+    grid-template-columns: 50px 3fr 2fr 2fr 70px;
+    grid-template-rows: 80px;
+    margin-top: 10px;
+    grid-gap: 10px;
+    width: 100%;
+    padding: 0 10px;
+    font-size: 15px;
+    border: 1px solid #000;
+}
+
+.users div {
+    text-align: center;
+}
+/* .users div:nth-child(2) {
+
+} */
+
+.user__title {
+    margin-bottom: 5px;
+}
+
+.user__avatar {
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+}
+
 .profile{
     display: flex;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .avatar {
@@ -9,10 +48,10 @@
     background: gray;
 }
 
-.info  {
-    margin-left: 10px;
-}
-
 .signOut{
     margin-top: 10px;
+}
+
+.label input {
+    display: none;
 }

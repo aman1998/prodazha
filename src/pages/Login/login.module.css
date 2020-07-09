@@ -1,13 +1,12 @@
 .login {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translateX(-50%);
     background: #fff;
-    z-index: 2;
+    z-index: 22;
     margin-top: 20px;
     width: 400px;
-    height: 450px;
     padding: 35px;
     border: 1px solid #000;
     border-radius: 10px;

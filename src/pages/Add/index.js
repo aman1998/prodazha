@@ -31,7 +31,7 @@ let Add = () => {
         }
         changeValue('title', '')
         changeValue('price', '')
-        fetch('http://localhost:3030/add', {
+        fetch('http://localhost:1717/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newAddList),
@@ -45,12 +45,12 @@ let Add = () => {
     return(
         <PageTemplate>
             <div className='container'>
-                {/* <h1>Upload file</h1>
+                <h1>Upload file</h1>
                 <form action="./upload" method="post" encType="multipart/form-data">
                     <label>Файл</label>
                     <input type="file" name="filedata" />
                     <input type="submit" value="Send" />
-                </form> */}
+                </form>
                 {token ?
                     <form>
                         <Category />

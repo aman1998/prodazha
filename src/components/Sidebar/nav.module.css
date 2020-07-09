@@ -1,0 +1,22 @@
+.sidebar {
+    padding-left: 15px;
+    background: rgba(13, 66, 97, 0.884);
+    height: 100vh;
+    width: 100%;
+    color: #fff;
+}
+
+.sidebar div {
+    /* position: fixed; */
+    display: flex;
+    flex-direction: column;
+}
+
+.navItem {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.active {
+    color: rgb(0, 0, 0);
+}

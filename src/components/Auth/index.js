@@ -21,7 +21,7 @@ let Auth = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        fetch('http://localhost:5432/login', {
+        fetch('http://localhost:1717/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
@@ -32,6 +32,7 @@ let Auth = () => {
         })
         .then(({user}) => {
             window.localStorage.setItem('token', user.token)
+            console.log(user)
             changeProfile(true)
             changeLogin(false)
         })

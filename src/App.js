@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import ProfileList from './pages/Profile/list'
+import ProfileFavorites from './pages/Profile/favorites' 
+import ProfileUsers from './pages/Profile/users' 
 import Add from './pages/Add'
 import Electronics from './pages/Subpages/electronics'
 import Household from './pages/Subpages/household'
@@ -23,6 +26,9 @@ const App = () => {
         <Route path='/clothes' component={Clothing} exact/>
         <Route path='/cars' component={Cars} exact/>
         <Route path='/property' component={Property} exact/>
+        <Route path='/profile/list' component={ProfileList} exact/>
+        <Route path='/profile/favorites' component={ProfileFavorites} exact/>
+        <Route path='/profile/users' component={ProfileUsers} exact/>
       </Switch>
     </BrowserRouter>
   )
