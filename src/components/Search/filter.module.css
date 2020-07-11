@@ -3,7 +3,7 @@
     margin-left: 100px;
 }
 
-.form input, .form button {
+.form input, .form div {
     height: 35px;
     outline: none;
     border: none;
@@ -15,13 +15,15 @@
     border-radius: 10px 0 0 10px;
 }
 
-.form button {
+.form div {
+    display: flex;
+    align-items: center;
     background: #2fbdb4;background: #2fbdb4;
     border-radius: 0 10px 10px 0;
     transition: .5s;
     padding: 0 10px;
 }
 
-.form button:hover {
+.form div:hover {
     background: #2fbdb3d0;
 }

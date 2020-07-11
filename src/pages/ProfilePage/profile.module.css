@@ -23,9 +23,6 @@
 .users div {
     text-align: center;
 }
-/* .users div:nth-child(2) {
-
-} */
 
 .user__title {
     margin-bottom: 5px;
@@ -45,7 +42,15 @@
 .avatar {
     width: 100px;
     height: 100px;
-    background: gray;
+    object-fit: cover;
+    background: grey;
+}
+
+.avatars {
+    height: 50px;
+    width: 100%;
+    object-fit: cover;
+    background: grey;
 }
 
 .signOut{

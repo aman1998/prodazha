@@ -1,0 +1,23 @@
+.auth, .registr {
+    display: block;
+    border: 1px solid #305996d0;
+    width: 100%;
+    padding: 0 15px;
+    margin-top: 0;
+    margin: 10px 0 15px; 
+    line-height: 40px;
+    border-radius: 20px;
+    outline: none;
+}
+
+.auth, .registr {
+  padding: 5px 10px;
+  background: #305996d0;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.auth, .registr {
+  background:  #305996;;
+  opacity: 1;
+}

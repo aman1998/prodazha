@@ -5,35 +5,23 @@
     transform: translateX(-50%);
     background: #fff;
     z-index: 22;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     width: 400px;
-    padding: 35px;
+    padding: 10px 35px 20px 35px;
     border: 1px solid #000;
     border-radius: 10px;
 }
 
-.login input, .login button {
+.login input {
     display: block;
     border: 1px solid #305996d0;
     width: 100%;
     padding: 0 15px;
+    margin-top: 0;
     margin: 10px 0 15px; 
     line-height: 40px;
     border-radius: 20px;
     outline: none;
-    /* color: white; */
-}
-
-.login button {
-    padding: 5px 10px;
-    background: #305996d0;
-    transition: .5s;
-    cursor: pointer;
-}
-
-.login button:hover {
-    background:  #305996;;
-    opacity: 1;
 }
 
 .title {
@@ -49,12 +37,10 @@
     font-weight: 700;
 }
 
-.title__login {
+.title__login, .title__registr {
+    border: none;
+    border-radius: 10px;
     margin-right: 5px;
-}
-
-.title__registr {
-    margin-left: 5px;
 }
 
 .title--active {

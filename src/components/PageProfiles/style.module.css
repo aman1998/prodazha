@@ -1,9 +1,0 @@
-.page {
-    /* position: fixed; */
-    width: 100%;
-}
-
-.content {
-    display: grid;
-    grid-template-columns: 150px 1fr;
-}
