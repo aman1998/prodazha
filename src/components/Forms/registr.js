@@ -7,7 +7,9 @@ import Input from './input'
 const Registr = () => {
   const [error, setError] = React.useState('')
 
-  const { firstname, lastname, username, password, mail, phone, isAdmin, image } = useSelector(
+  const {
+    firstname, lastname, username, password, mail, phone, isAdmin, image, favoritesList,
+  } = useSelector(
     (state) => ({
       firstname: state.registr.firstname,
       lastname: state.registr.lastname,
@@ -17,6 +19,7 @@ const Registr = () => {
       phone: state.registr.phone,
       isAdmin: state.registr.isAdmin,
       image: state.registr.image,
+      favoritesList: state.profiles.favoritesList,
     }))
 
   const dispatch = useDispatch()
@@ -24,7 +27,9 @@ const Registr = () => {
 
   const handleSignin = (e) => {
     e.preventDefault()
-    const body = { firstname, lastname, username, password, phone, mail, image, isAdmin }
+    const body = {
+      firstname, lastname, username, password, phone, mail, image, isAdmin, favoritesList,
+    }
     console.log(body)
     fetch('http://localhost:1717/signin', {
       method: 'POST',

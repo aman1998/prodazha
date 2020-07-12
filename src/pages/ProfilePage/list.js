@@ -1,13 +1,11 @@
 import React from 'react'
-import PageTemplate from '../../components/pageTemplates/PageProfiles'
+import PageTemplateProfile from '../../components/pageTemplates/PageProfiles'
 import styles from './profile.module.css'
 
 const List = () => (
-  <PageTemplate>
-    <div>
-      <div className={styles.profiles__container}>Объявления</div>
-    </div>
-  </PageTemplate>
+  <PageTemplateProfile>
+    <div className={styles.profiles__container}>Объявления</div>
+  </PageTemplateProfile>
 )
 
 export default List

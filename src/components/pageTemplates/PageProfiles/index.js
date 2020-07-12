@@ -2,9 +2,10 @@ import React from 'react'
 import Nav from '../../Nav'
 import SideBar from '../../Sidebar'
 import styles from './style.module.css'
+import PageTemplate from '../pageTemplate'
 
-const PageTemplate = ({ children }) => (
-  <div className={styles.container}>
+const PageTemplateProfiles = ({ children }) => (
+  <PageTemplate className={styles.container}>
     <div className={styles.page}>
       <Nav />
       <div className={styles.content}>
@@ -12,7 +13,7 @@ const PageTemplate = ({ children }) => (
       </div>
     </div>
     <div className={styles.children}>{children}</div>
-  </div>
+  </PageTemplate>
 )
 
-export default PageTemplate
+export default PageTemplateProfiles

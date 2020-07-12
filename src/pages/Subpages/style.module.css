@@ -21,18 +21,4 @@
   background: rgb(136, 128, 128);
 }
 
-.icons {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.icons div:nth-child(1) {
-  display: flex;
-}
-
-.message {
-  margin-left: 5px;
-}
 

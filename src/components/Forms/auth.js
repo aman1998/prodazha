@@ -21,6 +21,7 @@ const Auth = () => {
   const changeLogin = (login) => dispatch(showLogin(login))
   const changeProfile = () => dispatch(showProfile(profile))
   const changeValue = (fieldName, value) => dispatch(changeField('auth', fieldName, value))
+  const changeToken = (fieldName, value) => dispatch(changeField('profiles', fieldName, value))
 
   const handleLogin = (e) => {
     e.preventDefault()
@@ -35,7 +36,8 @@ const Auth = () => {
       })
       .then(({ user }) => {
         window.localStorage.setItem('token', user.token)
-        console.log(user)
+        changeToken('token', user.token)
+        // console.log(user)
         changeProfile(true)
         changeLogin(false)
       })
@@ -74,7 +76,7 @@ const Auth = () => {
                     </div>
                   )
             }
-      {profile ? <Redirect to="/profile" /> : null}
+      {token ? <Redirect to="/profile" /> : null}
     </div>
   )
 }

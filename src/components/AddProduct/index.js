@@ -1,13 +1,12 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // import styles from './add.module.css'
-import Login from '../../pages/Login'
 import { changeField } from '../../store/actions'
 import Category from '../Forms/category'
 import AddList from '../Forms/addList'
 
 const AddProduct = () => {
-  const { login, token, title, price, category, image, imagesList } = useSelector((state) => ({
+  const { token, title, price, category, image, imagesList } = useSelector((state) => ({
     profile: state.profile,
     profiles: state.profiles,
     login: state.login,
@@ -26,13 +25,7 @@ const AddProduct = () => {
 
   const handleAdd = (e) => {
     e.preventDefault()
-    const newAddList = {
-      title,
-      price,
-      category,
-      image,
-      imagesList,
-    }
+    const newAddList = { title, price, category, image, imagesList }
     changeValue('title', '')
     changeValue('price', '')
     changeToken('token', localStorage.getItem('token'))
@@ -66,7 +59,6 @@ const AddProduct = () => {
           )
           : 'Чтобы добавить объявление надо авторизироваться'}
       </div>
-      {login ? <Login /> : null}
     </div>
   )
 }

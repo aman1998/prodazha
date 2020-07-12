@@ -2,17 +2,13 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { string } from 'prop-types'
 import PageTemplate from '../../components/pageTemplates/pageTemplate'
-import Login from '../Login'
 import { changeField } from '../../store/actions'
 import styles from './style.module.css'
-import Heart from '../../components/Icons/heart'
-import Message from '../../components/Icons/message'
-import User from '../../components/Icons/user'
+import IconsBtn from '../../components/IconsBtn'
 
 const SubPage = ({ category }) => {
   // const [error, setError] = React.useState('')
-  const { login, addList } = useSelector((state) => ({
-    login: state.login,
+  const { addList } = useSelector((state) => ({
     addList: state.list.addList,
   }))
 
@@ -39,19 +35,12 @@ const SubPage = ({ category }) => {
                 <img className={styles.img} alt="#" />
                 <p>{`${list.price} сом`}</p>
                 <div>{list.title}</div>
-                <div className={styles.icons}>
-                  <div>
-                    <div className={styles.user}><User /></div>
-                    <div className={styles.message}><Message /></div>
-                  </div>
-                  <div className={styles.heart}><Heart /></div>
-                </div>
+                <IconsBtn />
               </div>
             )
             : null
         ))}
       </div>
-      {login ? <Login /> : null}
     </PageTemplate>
   )
 }

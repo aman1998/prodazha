@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import PageTemplate from '../../components/pageTemplates/PageProfiles'
+import PageTemplateProfile from '../../components/pageTemplates/PageProfiles'
 import styles from './profile.module.css'
 
 const Favorites = () => {
@@ -9,7 +9,7 @@ const Favorites = () => {
   }))
 
   return (
-    <PageTemplate>
+    <PageTemplateProfile>
       <div>
         <div className={styles.profiles__container}>Избранное</div>
         <div className={styles.profiles__container}>{favoritesList}</div>
@@ -21,7 +21,7 @@ const Favorites = () => {
                     </div>
                 ))} */}
       </div>
-    </PageTemplate>
+    </PageTemplateProfile>
   )
 }
 

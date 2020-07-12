@@ -1,19 +1,17 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './styles.module.css'
-import Login from '../../pages/Login'
 import { changeField } from '../../store/actions'
-import Heart from '../Icons/heart'
-import Message from '../Icons/message'
-import User from '../Icons/user'
+import IconsBtn from '../IconsBtn'
 
 const GetProducts = () => {
   // const [error, setError] = React.useState('')
-  const { search, login, addList } = useSelector((state) => ({
+  const { search, addList, token } = useSelector((state) => ({
     search: state.search,
-    login: state.login,
     addList: state.list.addList,
     favoritesList: state.profiles.favoritesList,
+    profile: state.profiles.profile,
+    token: state.profiles.token,
   }))
 
   const dispatch = useDispatch()
@@ -27,7 +25,7 @@ const GetProducts = () => {
       .then((data) => {
         changeValue('addList', data)
       })
-  }, [changeValue])
+  }, [changeValue, token])
 
   return (
     <div>
@@ -38,17 +36,10 @@ const GetProducts = () => {
               <img className={styles.img} alt="#" />
               <p>{`${list.price} сом`}</p>
               <div>{list.title}</div>
-              <div className={styles.icons}>
-                <div>
-                  <div className={styles.user}><User /></div>
-                  <div className={styles.message}><Message /></div>
-                </div>
-                <div className={styles.heart}><Heart /></div>
-              </div>
+              <IconsBtn />
             </div>
           ))}
       </div>
-      {login ? <Login /> : null}
     </div>
   )
 }
