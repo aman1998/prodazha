@@ -43,6 +43,10 @@ a {
     /* position: relative; */
 }
 
+.modal-open {
+  overflow: hidden;
+}
+
 /* #root {
   position: relative;
 } */

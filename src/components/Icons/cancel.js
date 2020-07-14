@@ -4,8 +4,13 @@ import { func } from 'prop-types'
 import styles from './icons.module.css'
 import { showLogin } from '../../store/actions'
 
-const Cancel = ({ changeLogin }) => (
-  <div onClick={() => changeLogin(false)}>
+const Cancel = ({ changeLogin }) => {
+  const hideModal = () => {
+    document.body.classList.remove('modal-open')
+    changeLogin(false)
+  }
+  return (
+  <div onClick={hideModal}>
     <svg
       version="1.1"
       id="Capa_1"
@@ -37,7 +42,7 @@ const Cancel = ({ changeLogin }) => (
       <g />
     </svg>
   </div>
-)
+)}
 
 showLogin.propTypes = {
   profile: func,

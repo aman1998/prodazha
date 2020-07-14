@@ -1,4 +1,41 @@
 const initilalState = {
+  showLogin: false,
+  serachResult: '',
+  forms: {
+    auth: {
+      username: '',
+      password: '',
+    },
+    registr: {
+      firstname: '',
+      lastname: '',
+      username: '',
+      password: '',
+      mail: '',
+      phone: '',
+      image: '',
+      isAdmin: false,
+    },
+  },
+  sales: {
+    allSales: [],
+    salesInfo: {
+      title: '',
+      price: '',
+      category: '',
+      image: '',
+    },
+  },
+  users: {
+    allUsers: [],
+    usersInfo: {
+      id: '',
+      favoriteSales: [],
+      userSales: [],
+      token: localStorage.getItem('token'),
+    },
+  },
+  // Временные редюсеры
   login: false,
   profile: false,
   search: '',

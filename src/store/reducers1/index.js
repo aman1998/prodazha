@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import forms from './forms'
+import sales from './sales'
 
 export default combineReducers({
-    forms,
+  sales,
 })

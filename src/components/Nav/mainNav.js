@@ -14,6 +14,11 @@ const MainNav = () => {
   const dispatch = useDispatch()
   const changeLogin = (login) => dispatch(showLogin(login))
 
+  const openModal = () => {
+    document.body.classList.add('modal-open')
+    changeLogin(true)
+  }
+
   return (
     <div className={styles.header__menu}>
       <div className={styles.title}>Amangeldi</div>
@@ -44,7 +49,7 @@ const MainNav = () => {
                         ))
                     }
           {/* eslint-disable */}
-          <li><div style={{ cursor: 'pointer' }} onClick={() => changeLogin(true)}>Вход</div></li>
+          <li><div style={{ cursor: 'pointer' }} onClick={openModal}>Вход</div></li>
         </ul>
       </nav>
     </div>
