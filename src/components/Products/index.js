@@ -22,7 +22,7 @@ const GetProducts = () => {
   const dispatch = useDispatch()
   // const changeValue = React.useCallback((fieldName, value) => {
   //   dispatch(changeField('list', fieldName, value))
-  }, [dispatch])
+  // }, [dispatch])
 
   React.useEffect(() => {
     if (!success) getSales()
