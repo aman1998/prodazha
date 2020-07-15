@@ -219,7 +219,7 @@ const reducer = (state = initialState, action) => {
         delete: {
           success: false,
           loading: false,
-          failed: true,
+          failed: false,
           error: action.error,
         },
       }
