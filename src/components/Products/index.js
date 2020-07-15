@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styles from './styles.module.css'
 import IconsBtn from '../IconsBtn'
 import { getSales as getSalesAction } from '../../store/actions1'
+// import { getSales as getSalesAction, addFavoritesSales } from '../../store/actions1'
 
 const GetProducts = () => {
   const { search, sales, loading, success, failed, error } = useSelector((state) => ({
@@ -15,6 +16,7 @@ const GetProducts = () => {
   }))
 
   const dispatch = useDispatch()
+  // const addFavorite = () => dispatch(addFavoritesSales())
 
   React.useEffect(() => {
     const getSales = () => dispatch(getSalesAction())

@@ -10,7 +10,6 @@ export const getUsers = () => (dispatch) => {
       dispatch({ type: 'GET_USERS_SUCCESS', data })
     })
 
-
   // fetch(`${endpoint}/profile`, {
   //   method: 'GET',
   //   headers: { 'X-Auth': `${token}` },

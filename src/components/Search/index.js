@@ -14,12 +14,6 @@ const Filter = () => {
   const dispatch = useDispatch()
   const searchList = () => dispatch(showSearchResult(search))
 
-  // const handleFilter = (e) => {
-  //   e.preventDefault()
-  //   const filter = e.target.elements.list.value
-  //   searchList(filter)
-  // }
-
   return (
     <div>
       <form className={styles.form}>

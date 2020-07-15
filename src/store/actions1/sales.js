@@ -42,6 +42,23 @@ export const addSale = (body) => (dispatch) => {
     })
 }
 
+export const addFavoritesSales = (body) => (dispatch) => {
+  dispatch({ type: 'ADD_FAVORITE_LOADING' })
+  fetch(`${endpoint}/favorites`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+    .then((response) => checkResponse(response, 'Ошибка добавления'))
+    .then((data) => {
+      dispatch({ type: 'ADD_FAVORITE_SUCCESS' })
+      console.log('data', data)
+    })
+    .catch((error) => {
+      dispatch({ type: 'ADD_FAVORITE_FAILED', error: errorHandler(error) })
+    })
+}
+
 export const changeField = (formName, fieldName, value) => ({
   type: 'CHANGE_FIELD',
   formName,

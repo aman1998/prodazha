@@ -1,7 +1,7 @@
 header {
     position: relative;
     padding-top: 20px;
-    background: #3b5998;
+    background: #103077;
     color: #fff;
 }
 
@@ -53,4 +53,30 @@ header {
 .add:hover {
     background: #2fbdb3d0;
     opacity: 1;
+}
+
+.mobileIcon {
+    display: none;
+}
+
+
+@media screen and (max-width: 900px) {
+    header {
+        padding-bottom: 20px;
+    }
+    .menu {
+        display: none;
+    }
+    .category {
+        display: none
+    }
+    .mobileIcon {
+        display:block;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .search {
+        display: none;
+    }
 }

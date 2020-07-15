@@ -1,6 +1,6 @@
 .form {
     display: flex;
-    margin-left: 100px;
+    /* margin-left: 100px; */
 }
 
 .form input, .form div {
@@ -12,6 +12,7 @@
 .form input {
     padding: 0 10px;
     width: 250px;
+    max-width: auto;
     border-radius: 10px 0 0 10px;
 }
 

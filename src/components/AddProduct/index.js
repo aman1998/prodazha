@@ -16,7 +16,7 @@ const AddProduct = () => {
     image: state.sales.description.image,
     imagesList: state.sales.description.imagesList,
     success: state.sales.add.success,
-    token: state.reducer.profiles.token,
+    token: state.auth.token,
   }))
 
   const dispatch = useDispatch()

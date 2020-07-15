@@ -22,5 +22,26 @@
 .children {
     position: relative;
     margin-left: 150px;
+    margin-top: 150px;
+    padding: 0 10px;
+}
+
+.modal {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 900px) {
+    .children {
+        margin-top: 85px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .children {
+        margin-top: 77px;
+    }
 }
 

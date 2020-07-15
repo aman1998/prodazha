@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import styles from './nav.module.css'
 import Search from '../Search'
 import { showLogin } from '../../store/actions'
+import Icon from '../Icons/icon'
 
 const MainNav = () => {
   const menuItem = [
@@ -22,7 +23,7 @@ const MainNav = () => {
   return (
     <div className={styles.header__menu}>
       <div className={styles.title}>Amangeldi</div>
-      <Search />
+      <div className={styles.search}><Search /></div>
       <nav>
         <ul className={styles.menu}>
           <li>
@@ -51,6 +52,7 @@ const MainNav = () => {
           {/* eslint-disable */}
           <li><div style={{ cursor: 'pointer' }} onClick={openModal}>Вход</div></li>
         </ul>
+        <div className={styles.mobileIcon}><Icon /></div>
       </nav>
     </div>
   )

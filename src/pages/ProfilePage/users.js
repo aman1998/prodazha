@@ -11,13 +11,14 @@ const Users = () => {
     getUsers()
   }, [dispatch])
 
-  const { users, loading, success, failed, error } = useSelector((state) => ({
+  const { users, loading, success, failed, error, token } = useSelector((state) => ({
     profile: state.auth.myProfile,
     users: state.users.data,
     loading: state.users.get.loading,
     success: state.users.get.success,
     failed: state.users.get.failed,
     error: state.users.get.error,
+    token: state.auth.token,
   }))
 
   return (
@@ -25,7 +26,7 @@ const Users = () => {
       <div className={styles.users__container}>
         { loading && <div>Загрузка...</div> }
         { failed && <div>Ошибка: {error}</div> }
-        {success && users.map((user) => (
+        {success && token ? users.map((user) => (
           <div key={user.token} className={styles.users}>
             <div className={styles.user__avatars}>
               <div className={styles.user__title}>Фото</div>
@@ -53,7 +54,7 @@ const Users = () => {
               <div className={styles.user__title}>Операция</div>
             </div>
           </div>
-        ))}
+        )) : 'Вы не авторизованы'}
       </div>
     </PageTemplateProfiles>
   )

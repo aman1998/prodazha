@@ -1,7 +1,7 @@
 const initialState = {
   data: [],
   favoriteData: [],
-  // searchResult: '',
+  searchResult: '',
   description: {
     title: '',
     price: '',

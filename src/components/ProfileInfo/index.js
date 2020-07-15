@@ -1,15 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { string, func, object } from 'prop-types'
+import { Redirect, NavLink } from 'react-router-dom'
 import styles from './style.module.css'
 import UserInfo from '../UserInfo'
 import Avatar from '../Avatar'
 import { showLogin } from '../../store/actions'
-import { getMyProfile as getMyProfileAction } from '../../store/actions1'
+import { getMyProfile as getMyProfileAction, getToken as getTokenAction } from '../../store/actions1'
 import logo from '../Icons/upload.svg'
+import Button from '../Forms/button'
 
-const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile }) => {
+const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile, getToken }) => {
   const [image, setImage] = React.useState('')
+  const [redirect, setRedirect] = React.useState(false)
+
   React.useEffect(() => {
     if (token) {
       fetch('http://localhost:1717/profile', {
@@ -22,7 +26,7 @@ const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile 
           // changeValue('profile', data)
         })
     }
-  }, [changeValue, changeProfile, token, getMyProfile])
+  }, [changeValue, changeProfile, token, getMyProfile, profile])
   const addHandleImage = () => {
     fetch(`http://localhost:1717/edit-profile/${profile.id}`, {
       method: 'PUT',
@@ -40,8 +44,6 @@ const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile 
       })
   }
 
-  console.log('profile', profile)
-
   const handleImageUpload = (e) => {
     const reader = new FileReader()
     const file = e.target.files[0]
@@ -53,20 +55,35 @@ const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile 
       console.log(error)
     }
   }
+  const deleteUser = () => {
+    localStorage.removeItem('token')
+    getToken(false)
+    setRedirect(true)
+  }
   return (
     <div className={styles.profile}>
-      <div>
+      <div className={styles.profileInfo}>
+        <div>
+          <h2>{`Добро пожаловать, ${profile.firstname}`}</h2>
+          <UserInfo
+            firstname={profile.firstname}
+            lastname={profile.lastname}
+            username={profile.username}
+            phone={profile.phone}
+          />
+        </div>
         <Avatar
           image={profile.image !== '' ? profile.image : logo}
           onChange={handleImageUpload}
           onClick={addHandleImage}
         />
-        <UserInfo
-          firstname={profile.firstname}
-          lastname={profile.lastname}
-          username={profile.username}
-        />
       </div>
+      <Button value="выйти" onClick={deleteUser} />
+      <Button value="Редактировать" onClick={deleteUser} />
+      <button type="button" className={styles.btn}>
+        <NavLink to="/add" exact>Добавить объявление</NavLink>
+      </button>
+      {redirect ? <Redirect to="/" /> : null}
     </div>
   )
 }
@@ -77,6 +94,7 @@ ProfileInfo.propTypes = {
   changeProfile: func,
   profile: object,
   getMyProfile: func,
+  getToken: func,
 }
 
 const mapStateToProps = (state) => ({
@@ -87,6 +105,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeLogin: (login) => dispatch(showLogin(login)),
   getMyProfile: (profile) => dispatch(getMyProfileAction(profile)),
+  getToken: (token) => dispatch(getTokenAction(token)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileInfo)

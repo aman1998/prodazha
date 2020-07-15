@@ -12,11 +12,12 @@ const Registr = () => {
   const [phone, setPhone] = React.useState('')
   const [image] = React.useState('')
   const [isAdmin] = React.useState(false)
+  const [favorites] = React.useState([])
 
   const handleSignin = (e) => {
     e.preventDefault()
     const body = {
-      firstname, lastname, username, password, phone, mail, image, isAdmin,
+      firstname, lastname, username, password, phone, mail, image, isAdmin, favorites,
     }
     console.log(body)
     fetch('http://localhost:1717/signin', {

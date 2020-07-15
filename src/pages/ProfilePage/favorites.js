@@ -5,7 +5,7 @@ import styles from './profile.module.css'
 
 const Favorites = () => {
   const { favoritesList } = useSelector((state) => ({
-    favoritesList: state.profiles.favoritesList,
+    favoritesList: state.sales.favData,
   }))
 
   return (
