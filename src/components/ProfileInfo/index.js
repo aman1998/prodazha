@@ -4,10 +4,11 @@ import { string, func, object } from 'prop-types'
 import styles from './style.module.css'
 import UserInfo from '../UserInfo'
 import Avatar from '../Avatar'
-import { showProfile, showLogin, changeField } from '../../store/actions'
+import { showLogin } from '../../store/actions'
+import { getMyProfile as getMyProfileAction } from '../../store/actions1'
 import logo from '../Icons/upload.svg'
 
-const ProfileInfo = ({ token, changeProfile, profile, changeValue }) => {
+const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile }) => {
   const [image, setImage] = React.useState('')
   React.useEffect(() => {
     if (token) {
@@ -17,10 +18,11 @@ const ProfileInfo = ({ token, changeProfile, profile, changeValue }) => {
       })
         .then((response) => response.json())
         .then(({ data }) => {
-          changeValue('profile', data)
+          getMyProfile(data)
+          // changeValue('profile', data)
         })
     }
-  }, [changeValue, changeProfile, token])
+  }, [changeValue, changeProfile, token, getMyProfile])
   const addHandleImage = () => {
     fetch(`http://localhost:1717/edit-profile/${profile.id}`, {
       method: 'PUT',
@@ -33,10 +35,12 @@ const ProfileInfo = ({ token, changeProfile, profile, changeValue }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        changeValue('profile', data)
+        getMyProfile(data)
         console.log(data)
       })
   }
+
+  console.log('profile', profile)
 
   const handleImageUpload = (e) => {
     const reader = new FileReader()
@@ -72,17 +76,17 @@ ProfileInfo.propTypes = {
   changeValue: func,
   changeProfile: func,
   profile: object,
+  getMyProfile: func,
 }
 
 const mapStateToProps = (state) => ({
-  token: state.profiles.token,
-  profile: state.profiles.profile,
+  token: state.auth.token,
+  profile: state.auth.myProfile,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   changeLogin: (login) => dispatch(showLogin(login)),
-  changeProfile: (profiles) => dispatch(showProfile(profiles)),
-  changeValue: (fieldName, value) => dispatch(changeField('profiles', fieldName, value)),
+  getMyProfile: (profile) => dispatch(getMyProfileAction(profile)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileInfo)

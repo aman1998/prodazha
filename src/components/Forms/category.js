@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { changeField } from '../../store/actions'
+import { changeField } from '../../store/actions1'
 
 const Add = () => {
   const dispatch = useDispatch()
-  const changeValue = (fieldName, value) => dispatch(changeField('list', fieldName, value))
+  const changeValue = (fieldName, value) => dispatch(changeField('description', fieldName, value))
 
   return (
     <div>

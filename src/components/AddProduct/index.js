@@ -1,27 +1,34 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 // import styles from './add.module.css'
-import { changeField } from '../../store/actions'
 import Category from '../Forms/category'
 import AddList from '../Forms/addList'
+import { addSale as addSaleAction, getSales as getSalesAction, changeField } from '../../store/actions1'
 
 const AddProduct = () => {
-  const { token, title, price, category, image, imagesList } = useSelector((state) => ({
+  const { token, title, price, category, image, imagesList, success } = useSelector((state) => ({
     profile: state.profile,
     profiles: state.profiles,
     login: state.login,
-    title: state.list.title,
-    price: state.list.price,
-    category: state.list.category,
-    image: state.list.image,
-    imagesList: state.list.imagesList,
-    token: state.profiles.token,
+    title: state.sales.description.title,
+    price: state.sales.description.price,
+    category: state.sales.description.category,
+    image: state.sales.description.image,
+    imagesList: state.sales.description.imagesList,
+    success: state.sales.add.success,
+    token: state.reducer.profiles.token,
   }))
 
   const dispatch = useDispatch()
   // const changeProfile = (profile) => dispatch(showProfile(profile))
-  const changeValue = (fieldName, value) => dispatch(changeField('list', fieldName, value))
+  const changeValue = (fieldName, value) => dispatch(changeField('description', fieldName, value))
   const changeToken = (fieldName, value) => dispatch(changeField('profiles', fieldName, value))
+  const addSale = (data) => dispatch(addSaleAction(data))
+
+  React.useEffect(() => {
+    const getSales = () => dispatch(getSalesAction())
+    if (success) getSales()
+  }, [success, dispatch])
 
   const handleAdd = (e) => {
     e.preventDefault()
@@ -29,13 +36,7 @@ const AddProduct = () => {
     changeValue('title', '')
     changeValue('price', '')
     changeToken('token', localStorage.getItem('token'))
-    fetch('http://localhost:1717/add', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newAddList),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log('data', data))
+    addSale(newAddList)
   }
 
   return (

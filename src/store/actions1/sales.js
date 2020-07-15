@@ -8,6 +8,11 @@ const checkResponse = (response, errText) => {
 // функция вытаскивает из объекта ошибки строку
 const errorHandler = (error) => (error.response ? error.response.data : error.message)
 
+export const showSearchResult = (searchResult) => ({
+  type: 'SHOW_SEARCH_RESULT',
+  searchResult,
+})
+
 export const getSales = () => (dispatch) => {
   dispatch({ type: 'GET_SALES_LOADING' })
   fetch(`${endpoint}/list`)
@@ -28,13 +33,21 @@ export const addSale = (body) => (dispatch) => {
     body: JSON.stringify(body),
   })
     .then((response) => checkResponse(response, 'Ошибка добавления'))
-    .then(() => {
+    .then((data) => {
       dispatch({ type: 'ADD_SALE_SUCCESS' })
+      console.log('data', data)
     })
     .catch((error) => {
       dispatch({ type: 'ADD_SALE_FAILED', error: errorHandler(error) })
     })
 }
+
+export const changeField = (formName, fieldName, value) => ({
+  type: 'CHANGE_FIELD',
+  formName,
+  fieldName,
+  value,
+})
 
 // export const deleteTodo = () => {
 //   dispatch({ type: 'ADD_TODO_LOADING' })

@@ -3,18 +3,18 @@ import { connect } from 'react-redux'
 import { string, func } from 'prop-types'
 import { Redirect, NavLink } from 'react-router-dom'
 import PageTemplateProfiles from '../../components/pageTemplates/PageProfiles'
-import { showProfile, showLogin, changeField } from '../../store/actions'
+import { showLogin } from '../../store/actions'
+import { getToken as getTokenAction } from '../../store/actions1'
 import ProfileInfo from '../../components/ProfileInfo'
 import styles from './profile.module.css'
 
-const Profile = ({ token, changeProfile, changeValue }) => {
+const Profile = ({ token, getToken }) => {
   const [redirect, setRedirect] = React.useState(false)
 
   const deleteUser = () => {
     localStorage.removeItem('token')
-    changeValue('token', false)
+    getToken(false)
     setRedirect(true)
-    changeProfile(false)
   }
 
   return (
@@ -37,19 +37,17 @@ const Profile = ({ token, changeProfile, changeValue }) => {
 
 Profile.propTypes = {
   token: string.isRequired,
-  changeValue: func,
-  changeProfile: func,
+  getToken: func,
 }
 
 const mapStateToProps = (state) => ({
-  token: state.profiles.token,
-  profile: state.profiles.profile,
+  token: state.auth.token,
+  profile: state.auth.myProfile,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   changeLogin: (login) => dispatch(showLogin(login)),
-  changeProfile: (profiles) => dispatch(showProfile(profiles)),
-  changeValue: (fieldName, value) => dispatch(changeField('profiles', fieldName, value)),
+  getToken: (token) => dispatch(getTokenAction(token)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

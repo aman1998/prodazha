@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 const PageTemplate = ({ children }) => {
   const {login} = useSelector((state) => ({
-    login: state.login,
+    login: state.reducer.login,
   }))
 
   return (

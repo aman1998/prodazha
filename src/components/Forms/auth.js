@@ -1,27 +1,25 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { string, bool } from 'prop-types'
-import { showProfile, showLogin, changeField } from '../../store/actions'
+// import { string, bool } from 'prop-types'
+import { showLogin } from '../../store/actions'
+import { getToken as getTokenAction } from '../../store/actions1'
 import styles from './forms.module.css'
 import Input from './input'
 
 const Auth = () => {
   const [error, setError] = React.useState('')
+  const [username, setUsername] = React.useState('')
+  const [password, setPassword] = React.useState('')
 
-  const { profile, token, username, password } = useSelector((state) => ({
-    profile: state.profile,
-    login: state.login,
-    username: state.auth.username,
-    password: state.auth.password,
-    token: state.profiles.token,
+  const { token } = useSelector((state) => ({
+    login: state.reducer.login,
+    token: state.auth.token,
   }))
 
   const dispatch = useDispatch()
   const changeLogin = (login) => dispatch(showLogin(login))
-  const changeProfile = () => dispatch(showProfile(profile))
-  const changeValue = (fieldName, value) => dispatch(changeField('auth', fieldName, value))
-  const changeToken = (fieldName, value) => dispatch(changeField('profiles', fieldName, value))
+  const getToken = () => dispatch(getTokenAction(token))
 
   const handleLogin = (e) => {
     e.preventDefault()
@@ -36,9 +34,7 @@ const Auth = () => {
       })
       .then(({ user }) => {
         window.localStorage.setItem('token', user.token)
-        changeToken('token', user.token)
-        // console.log(user)
-        changeProfile(true)
+        getToken(user.token)
         changeLogin(false)
       })
       .catch((errorStatus) => {
@@ -55,13 +51,13 @@ const Auth = () => {
                     <div>
                       <Input
                         value={username}
-                        onChange={(e) => changeValue('username', e.target.value)}
+                        onChange={(e) => setUsername(e.target.value)}
                         type="text"
                         placeholder="Никнейм"
                       />
                       <Input
                         value={password}
-                        onChange={(e) => changeValue('password', e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
                         type="text"
                         placeholder="Пароль"
                       />
@@ -81,15 +77,11 @@ const Auth = () => {
   )
 }
 
-changeField.propTypes = {
-  token: string.isRequired,
-  username: string.isRequired,
-  password: string.isRequired,
-  profile: bool,
-}
-
-showProfile.propTypes = {
-  profile: bool,
-}
+// Auth.propTypes = {
+//   token: string.isRequired,
+//   username: string.isRequired,
+//   password: string.isRequired,
+//   profile: bool,
+// }
 
 export default Auth

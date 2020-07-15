@@ -2,30 +2,30 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PageTemplateProfiles from '../../components/pageTemplates/PageProfiles'
 import styles from './profile.module.css'
-import { changeField } from '../../store/actions'
+import { getUsers as getUsersAction } from '../../store/actions1'
 
 const Users = () => {
   const dispatch = useDispatch()
   React.useEffect(() => {
-    const changeValue = (fieldName, value) => dispatch(changeField('profiles', fieldName, value))
-    fetch('http://localhost:1717/users-list', {
-      method: 'GET',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        changeValue('profilesList', data)
-      })
+    const getUsers = () => dispatch(getUsersAction())
+    getUsers()
   }, [dispatch])
 
-  const { profilesList } = useSelector((state) => ({
-    profilesList: state.profiles.profilesList,
-    profile: state.profiles.profile,
+  const { users, loading, success, failed, error } = useSelector((state) => ({
+    profile: state.auth.myProfile,
+    users: state.users.data,
+    loading: state.users.get.loading,
+    success: state.users.get.success,
+    failed: state.users.get.failed,
+    error: state.users.get.error,
   }))
 
   return (
     <PageTemplateProfiles>
       <div className={styles.users__container}>
-        {profilesList.map((user) => (
+        { loading && <div>Загрузка...</div> }
+        { failed && <div>Ошибка: {error}</div> }
+        {success && users.map((user) => (
           <div key={user.token} className={styles.users}>
             <div className={styles.user__avatars}>
               <div className={styles.user__title}>Фото</div>

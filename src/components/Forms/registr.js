@@ -1,34 +1,22 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { changeField } from '../../store/actions'
 import styles from './forms.module.css'
 import Input from './input'
 
 const Registr = () => {
   const [error, setError] = React.useState('')
-
-  const {
-    firstname, lastname, username, password, mail, phone, isAdmin, image, favoritesList,
-  } = useSelector(
-    (state) => ({
-      firstname: state.registr.firstname,
-      lastname: state.registr.lastname,
-      username: state.registr.username,
-      password: state.registr.password,
-      mail: state.registr.mail,
-      phone: state.registr.phone,
-      isAdmin: state.registr.isAdmin,
-      image: state.registr.image,
-      favoritesList: state.profiles.favoritesList,
-    }))
-
-  const dispatch = useDispatch()
-  const changeValue = (fieldName, value) => dispatch(changeField('registr', fieldName, value))
+  const [username, setUsername] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const [firstname, setFirstname] = React.useState('')
+  const [lastname, setLastname] = React.useState('')
+  const [mail, setMail] = React.useState('')
+  const [phone, setPhone] = React.useState('')
+  const [image] = React.useState('')
+  const [isAdmin] = React.useState(false)
 
   const handleSignin = (e) => {
     e.preventDefault()
     const body = {
-      firstname, lastname, username, password, phone, mail, image, isAdmin, favoritesList,
+      firstname, lastname, username, password, phone, mail, image, isAdmin,
     }
     console.log(body)
     fetch('http://localhost:1717/signin', {
@@ -52,37 +40,37 @@ const Registr = () => {
     <div className="container">
       <Input
         value={firstname}
-        onChange={(e) => changeValue('firstname', e.target.value)}
+        onChange={(e) => setFirstname(e.target.value)}
         placeholder="Имя"
         type="text"
       />
       <Input
         value={lastname}
-        onChange={(e) => changeValue('lastname', e.target.value)}
+        onChange={(e) => setLastname(e.target.value)}
         type="text"
         placeholder="Фамилия"
       />
       <Input
         value={username}
-        onChange={(e) => changeValue('username', e.target.value)}
+        onChange={(e) => setUsername(e.target.value)}
         type="text"
         placeholder="Никнейм"
       />
       <Input
         value={password}
-        onChange={(e) => changeValue('password', e.target.value)}
+        onChange={(e) => setPassword(e.target.value)}
         type="text"
         placeholder="Пароль"
       />
       <Input
         value={phone}
-        onChange={(e) => changeValue('phone', e.target.value)}
+        onChange={(e) => setPhone(e.target.value)}
         type="text"
         placeholder="Телефон"
       />
       <Input
         value={mail}
-        onChange={(e) => changeValue('mail', e.target.value)}
+        onChange={(e) => setMail(e.target.value)}
         type="text"
         placeholder="Почта"
       />

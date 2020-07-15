@@ -1,17 +1,17 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { string, number } from 'prop-types'
-import { changeField } from '../../store/actions'
+import { changeField } from '../../store/actions1'
 import Input from './input'
 
 const Add = () => {
   const { title, price } = useSelector((state) => ({
-    title: state.list.title,
-    price: state.list.price,
+    title: state.sales.description.title,
+    price: state.sales.description.price,
   }))
 
   const dispatch = useDispatch()
-  const changeValue = (fieldName, value) => dispatch(changeField('list', fieldName, value))
+  const changeValue = (fieldName, value) => dispatch(changeField('description', fieldName, value))
 
   return (
     <div>
