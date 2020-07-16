@@ -1,4 +1,5 @@
 import React from 'react'
+import useForm from 'react-hook-form'
 import styles from './forms.module.css'
 import Input from './input'
 
@@ -13,6 +14,9 @@ const Registr = () => {
   const [image] = React.useState('')
   const [isAdmin] = React.useState(false)
   const [favorites] = React.useState([])
+  const [formsErrors, setFormsErrors] = React.useState(
+    { firstname: '', lastname: '', username: '', phone: '', mail: '', password: '' },
+  )
 
   const handleSignin = (e) => {
     e.preventDefault()
@@ -60,13 +64,13 @@ const Registr = () => {
       <Input
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        type="text"
+        type="password"
         placeholder="Пароль"
       />
       <Input
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-        type="text"
+        type="tel"
         placeholder="Телефон"
       />
       <Input

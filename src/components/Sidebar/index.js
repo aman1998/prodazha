@@ -6,9 +6,9 @@ import styles from './nav.module.css'
 const Sidebar = () => {
   const profilesPage = [
     { id: 1, link: '/profile', text: 'Мой профиль' },
-    { id: 2, link: '/profile/list', text: 'Мои объявления' },
-    { id: 3, link: '/profile/favorites', text: 'Избранное' },
-    { id: 4, link: '/profile/users', text: 'Пользователи' },
+    { id: 2, link: '/list', text: 'Мои объявления' },
+    { id: 3, link: '/favorites', text: 'Избранное' },
+    { id: 4, link: '/users', text: 'Пользователи' },
   ]
 
   return (

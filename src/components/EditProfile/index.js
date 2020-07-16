@@ -2,30 +2,17 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './style.module.css'
 import { getMyProfile as getMyProfileAction } from '../../store/actions1'
+import { showEdit as showEditAction } from '../../store/actions'
 import Input from '../Forms/input'
 
 const EditProfile = () => {
-  const { profile, token } = useSelector((state) => ({
+  const { profile } = useSelector((state) => ({
     profile: state.auth.myProfile,
     token: state.auth.token,
   }))
 
-  const getMyProfile = React.useCallback(() => dispatch(getMyProfileAction(profile)))
-
-  const dispatch= useDispatch()
-  React.useEffect(() => {
-    if (token) {
-      fetch('http://localhost:1717/profile', {
-        method: 'GET',
-        headers: { 'X-Auth': `${token}` },
-      })
-        .then((response) => response.json())
-        .then(({ data }) => {
-          getMyProfile(data)
-          // changeValue('profile', data)
-        })
-    }
-  }, [dispatch, getMyProfile, profile, token])
+  const dispatch = useDispatch()
+  const showEdit = (edit) => dispatch(showEditAction(edit))
 
   const [firstname, setFirstname] = React.useState('')
   const [lastname, setLastname] = React.useState('')
@@ -33,6 +20,7 @@ const EditProfile = () => {
   const [mail, setMail] = React.useState('')
 
   const changeProfile = () => {
+    const getMyProfile = () => dispatch(getMyProfileAction(profile))
     fetch(`http://localhost:1717/edit-profile-info/${profile.id}`, {
       method: 'PUT',
       body: JSON.stringify({
@@ -45,6 +33,7 @@ const EditProfile = () => {
       .then((response) => response.json())
       .then((data) => {
         getMyProfile(data)
+        showEdit(false)
         setFirstname('')
         setLastname('')
         setPhone('')
@@ -53,33 +42,38 @@ const EditProfile = () => {
       })
   }
 
+  const removeEdit = () => {
+    showEdit(false)
+  }
+
   return (
     <div className={styles.edit}>
       <Input
-        value={profile.firstname}
+        value={firstname}
         onChange={(e) => setFirstname(e.target.value)}
         placeholder="Имя"
         type="text"
       />
       <Input
-        value={profile.lastname}
+        value={lastname}
         onChange={(e) => setLastname(e.target.value)}
         type="text"
         placeholder="Фамилия"
       />
       <Input
-        value={profile.phone}
+        value={phone}
         onChange={(e) => setPhone(e.target.value)}
         type="text"
         placeholder="Телефон"
       />
       <Input
-        value={profile.mail}
+        value={mail}
         onChange={(e) => setMail(e.target.value)}
         type="text"
         placeholder="Почта"
       />
       <button type="button" onClick={changeProfile}>Сохранить</button>
+      <button type="button" onClick={removeEdit}>Скрыть</button>
     </div>
   )
 }

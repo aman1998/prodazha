@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import styles from './styles.module.css'
 import IconsBtn from '../IconsBtn'
 import { getSales as getSalesAction } from '../../store/actions1'
-// import { getSales as getSalesAction, addFavoritesSales } from '../../store/actions1'
+// import { showSearchResult } from '../../store/actions'
 
 const GetProducts = () => {
   const { search, sales, loading, success, failed, error } = useSelector((state) => ({
-    search: state.sales.searchResult,
+    search: state.reducer.search,
     sales: state.sales.data,
     loading: state.sales.get.loading,
     success: state.sales.get.success,
@@ -31,7 +31,6 @@ const GetProducts = () => {
         { success
         && sales.filter((item) => item.title.toLowerCase().includes(search.toLowerCase())).map(
           (list) => (
-          // && sales.map((list) => (
             <div key={list.id} className={styles.block}>
               <img className={styles.img} alt="#" />
               <p>{`${list.price} сом`}</p>

@@ -1,5 +1,6 @@
 const initilalState = {
   login: false,
+  edit: false,
   search: '',
 }
 
@@ -14,6 +15,11 @@ const reducer = (state = initilalState, action) => {
       return {
         ...state,
         search: action.search,
+      }
+    case 'SHOW_EDIT':
+      return {
+        ...state,
+        edit: action.edit,
       }
     default:
       return state

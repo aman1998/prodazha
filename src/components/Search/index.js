@@ -3,16 +3,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { string } from 'prop-types'
 import SearchIcon from '../Icons/search'
 import styles from './filter.module.css'
-import { showSearchResult } from '../../store/actions1'
-// import { Redirect } from 'react-router-dom'
+// import { showSearchResult } from '../../store/actions1'
+import { showSearchResult } from '../../store/actions'
 
 const Filter = () => {
   const { search } = useSelector((state) => ({
-    search: state.sales.searchResult,
+    search: state.reducer.search,
   }))
 
   const dispatch = useDispatch()
-  const searchList = () => dispatch(showSearchResult(search))
+  const searchList = (e) => dispatch(showSearchResult(e))
 
   return (
     <div>

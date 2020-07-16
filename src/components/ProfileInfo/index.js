@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { string, func, object } from 'prop-types'
+import { string, func, object, bool } from 'prop-types'
 import { Redirect, NavLink } from 'react-router-dom'
 import styles from './style.module.css'
 import UserInfo from '../UserInfo'
 import Avatar from '../Avatar'
-import { showLogin } from '../../store/actions'
+import { showLogin, showEdit as showEditAction } from '../../store/actions'
 import { getMyProfile as getMyProfileAction, getToken as getTokenAction } from '../../store/actions1'
 import logo from '../Icons/upload.svg'
 import Button from '../Forms/button'
 
-const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile, getToken }) => {
+const ProfileInfo = ({ token, profile, getMyProfile, getToken, edit, showEdit }) => {
   const [image, setImage] = React.useState('')
   const [redirect, setRedirect] = React.useState(false)
 
@@ -23,10 +23,10 @@ const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile,
         .then((response) => response.json())
         .then(({ data }) => {
           getMyProfile(data)
-          // changeValue('profile', data)
+        // changeValue('profile', data)
         })
     }
-  }, [changeValue, changeProfile, token, getMyProfile, profile])
+  }, [getMyProfile, token, edit])
   const addHandleImage = () => {
     fetch(`http://localhost:1717/edit-profile/${profile.id}`, {
       method: 'PUT',
@@ -44,6 +44,8 @@ const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile,
       })
   }
 
+  console.log('profile', profile)
+
   const handleImageUpload = (e) => {
     const reader = new FileReader()
     const file = e.target.files[0]
@@ -60,8 +62,13 @@ const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile,
     getToken(false)
     setRedirect(true)
   }
+
+  const editUser = () => {
+    showEdit(true)
+  }
   return (
     <div className={styles.profile}>
+      {redirect ? <Redirect to="/" /> : null}
       <div className={styles.profileInfo}>
         <div>
           <h2>{`Добро пожаловать, ${profile.firstname}`}</h2>
@@ -79,31 +86,33 @@ const ProfileInfo = ({ token, changeProfile, profile, changeValue, getMyProfile,
         />
       </div>
       <Button value="выйти" onClick={deleteUser} />
-      <Button value="Редактировать" onClick={deleteUser} />
+      <Button value="Редактировать" onClick={editUser} />
       <button type="button" className={styles.btn}>
         <NavLink to="/add" exact>Добавить объявление</NavLink>
       </button>
-      {redirect ? <Redirect to="/" /> : null}
     </div>
   )
 }
 
 ProfileInfo.propTypes = {
-  token: string.isRequired,
-  changeValue: func,
-  changeProfile: func,
+  token: string,
   profile: object,
   getMyProfile: func,
   getToken: func,
+  showEdit: func,
+  edit: bool,
+
 }
 
 const mapStateToProps = (state) => ({
   token: state.auth.token,
   profile: state.auth.myProfile,
+  edit: state.reducer.edit,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   changeLogin: (login) => dispatch(showLogin(login)),
+  showEdit: (edit) => dispatch(showEditAction(edit)),
   getMyProfile: (profile) => dispatch(getMyProfileAction(profile)),
   getToken: (token) => dispatch(getTokenAction(token)),
 })

@@ -13,13 +13,6 @@ const Favorites = () => {
       <div>
         <div className={styles.profiles__container}>Избранное</div>
         <div className={styles.profiles__container}>{favoritesList}</div>
-        {/* {favoritesList.map(list => (
-                    <div key={list.id} className={styles.block}>
-                        <img className={styles.img} />
-                        <p>{`${list.price} сом`}</p>
-                        <div>{list.title}</div>
-                    </div>
-                ))} */}
       </div>
     </PageTemplateProfile>
   )

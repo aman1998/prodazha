@@ -1,23 +1,22 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-// import styles from './add.module.css'
-import Category from '../Forms/category'
 import AddList from '../Forms/addList'
 import { addSale as addSaleAction, getSales as getSalesAction, changeField } from '../../store/actions1'
 
 const AddProduct = () => {
-  const { token, title, price, category, image, imagesList, success } = useSelector((state) => ({
-    profile: state.profile,
-    profiles: state.profiles,
-    login: state.login,
-    title: state.sales.description.title,
-    price: state.sales.description.price,
-    category: state.sales.description.category,
-    image: state.sales.description.image,
-    imagesList: state.sales.description.imagesList,
-    success: state.sales.add.success,
-    token: state.auth.token,
-  }))
+  const { token, title, price, category, image, imagesList, success, profile } = useSelector(
+    (state) => ({
+      profiles: state.profiles,
+      login: state.login,
+      title: state.sales.description.title,
+      price: state.sales.description.price,
+      category: state.sales.description.category,
+      image: state.sales.description.image,
+      imagesList: state.sales.description.imagesList,
+      success: state.sales.add.success,
+      token: state.auth.token,
+      profile: state.auth.myProfile,
+    }))
 
   const dispatch = useDispatch()
   // const changeProfile = (profile) => dispatch(showProfile(profile))
@@ -28,10 +27,9 @@ const AddProduct = () => {
   React.useEffect(() => {
     const getSales = () => dispatch(getSalesAction())
     if (success) getSales()
-  }, [success, dispatch])
+  }, [success, dispatch, profile, token])
 
-  const handleAdd = (e) => {
-    e.preventDefault()
+  const handleAdd = () => {
     const newAddList = { title, price, category, image, imagesList }
     changeValue('title', '')
     changeValue('price', '')
@@ -45,16 +43,8 @@ const AddProduct = () => {
         {token
           ? (
             <div>
-              <h1>Upload file</h1>
-              <form action="./upload" method="post" encType="multipart/form-data">
-                Файл
-                <input type="file" name="filedata" />
-                <input type="submit" value="Send" />
-              </form>
               <form>
-                <Category />
-                <AddList />
-                <button onClick={handleAdd} type="submit">Добавить</button>
+                <AddList onClick={handleAdd} />
               </form>
             </div>
           )

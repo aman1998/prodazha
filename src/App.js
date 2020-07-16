@@ -26,9 +26,9 @@ const App = () => {
         <Route path='/clothes' component={Clothing} exact/>
         <Route path='/cars' component={Cars} exact/>
         <Route path='/property' component={Property} exact/>
-        <Route path='/profile/list' component={ProfileList} exact/>
-        <Route path='/profile/favorites' component={ProfileFavorites} exact/>
-        <Route path='/profile/users' component={ProfileUsers} exact/>
+        <Route path='/list' component={ProfileList} exact/>
+        <Route path='/favorites' component={ProfileFavorites} exact/>
+        <Route path='/users' component={ProfileUsers} exact/>
       </Switch>
     </BrowserRouter>
   )
