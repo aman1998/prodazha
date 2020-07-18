@@ -21,6 +21,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         token: localStorage.getItem('token'),
+        myProfile: action.myProfile,
         login: {
           success: true,
           loading: false,

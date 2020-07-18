@@ -26,7 +26,7 @@ const SubPage = ({ category }) => {
           list.category === category
             ? (
               <div key={list.id} className={styles.block}>
-                <img className={styles.img} alt="#" />
+                <img className={styles.img} alt="#" src={list.image} />
                 <p>{`${list.price} сом`}</p>
                 <div>{list.title}</div>
                 <IconsBtn />

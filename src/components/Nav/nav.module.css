@@ -55,7 +55,11 @@ header {
     opacity: 1;
 }
 
-.mobileIcon {
+.login {
+    display: none;
+}
+
+.mobileNav {
     display: none;
 }
 
@@ -64,14 +68,11 @@ header {
     header {
         padding-bottom: 20px;
     }
-    .menu {
+    .title, .menu, .category {
         display: none;
     }
-    .category {
-        display: none
-    }
-    .mobileIcon {
-        display:block;
+    .login, .mobileNav {
+        display: block;
     }
 }
 

@@ -25,6 +25,23 @@ export const getSales = () => (dispatch) => {
     })
 }
 
+export const deleteSales = (id) => (dispatch) => {
+  dispatch({ type: 'DELETE_SALES_LOADING' })
+  fetch(`${endpoint}/delete/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  })
+    .then((response) => checkResponse(response, 'Ошибка загрузки'))
+    .then((data) => {
+      dispatch({ type: 'DELETE_SALES_SUCCESS', data })
+    })
+    .catch((error) => {
+      dispatch({ type: 'DELETE_SALES_FAILED', error: errorHandler(error) })
+    })
+}
+
 export const addSale = (body) => (dispatch) => {
   dispatch({ type: 'ADD_TODO_LOADING' })
   fetch(`${endpoint}/add`, {

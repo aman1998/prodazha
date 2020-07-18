@@ -1,10 +1,12 @@
 import React from 'react'
-import useForm from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+// import useForm from 'react-hook-form'
 import styles from './forms.module.css'
 import Input from './input'
+import { signUp as signUpActions } from '../../store/actions1/auth'
 
 const Registr = () => {
-  const [error, setError] = React.useState('')
+  // const [error, setError] = React.useState('')
   const [username, setUsername] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [firstname, setFirstname] = React.useState('')
@@ -14,31 +16,16 @@ const Registr = () => {
   const [image] = React.useState('')
   const [isAdmin] = React.useState(false)
   const [favorites] = React.useState([])
-  const [formsErrors, setFormsErrors] = React.useState(
-    { firstname: '', lastname: '', username: '', phone: '', mail: '', password: '' },
-  )
+
+  const dispatch = useDispatch()
+  const signUp = (data) => dispatch(signUpActions(data))
 
   const handleSignin = (e) => {
     e.preventDefault()
     const body = {
       firstname, lastname, username, password, phone, mail, image, isAdmin, favorites,
     }
-    console.log(body)
-    fetch('http://localhost:1717/signin', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    })
-      .then((response) => {
-        if (!response.ok) throw response.status
-        return response.json()
-      })
-      .then(() => {
-        // window.localStorage.setItem('user', data.user)
-      })
-      .catch(() => {
-        setError('Неизвестная ошибка')
-      })
+    signUp(body)
   }
 
   return (
@@ -86,7 +73,7 @@ const Registr = () => {
       >
         Регистрация
       </button>
-      {error}
+      {/* {error} */}
     </div>
   )
 }

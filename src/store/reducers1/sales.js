@@ -130,6 +130,37 @@ const reducer = (state = initialState, action) => {
           error: action.error,
         },
       }
+    case 'DELETE_SALE_FAILED':
+      return {
+        ...state,
+        delete: {
+          success: false,
+          loading: false,
+          failed: true,
+          error: action.error,
+        },
+      }
+    case 'DELETE_SALE_SUCCESS':
+      return {
+        ...state,
+        data: action.data,
+        delete: {
+          success: false,
+          loading: false,
+          failed: true,
+          error: action.error,
+        },
+      }
+    case 'DELETE_SALE_LOADING':
+      return {
+        ...state,
+        delete: {
+          success: false,
+          loading: false,
+          failed: true,
+          error: action.error,
+        },
+      }
       // FAVORITES SALES
     case 'GET_FAVORITES_SUCCESS':
       return {

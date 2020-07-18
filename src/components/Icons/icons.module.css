@@ -4,7 +4,12 @@
     fill: #fff;
 }
 
-.heart, .message, .user {
+.user, .icon {
+    fill: #fff;
+    transition: 0.5s;
+}
+
+.heart, .message, .delete {
     width: 20px;
     height: 20px;
     fill: rgb(143, 130, 130);
@@ -31,6 +36,14 @@
     fill: rgb(102, 214, 49);
 }
 
+.delete:hover{
+    fill: rgb(30, 31, 27);
+}
+
 .user:hover{
-    fill: rgb(49, 74, 214);
+    fill: rgb(143, 130, 130);;
+}
+
+.icon:hover {
+    fill: rgb(87, 83, 78);
 }

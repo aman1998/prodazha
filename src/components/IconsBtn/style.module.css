@@ -1,7 +1,7 @@
 .icons {
   margin-top: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   cursor: pointer;
 }
 
@@ -9,7 +9,7 @@
   display: flex;
 }
 
-.message {
-  margin-left: 5px;
+.delete {
+  margin-right: 10px;
 }
 

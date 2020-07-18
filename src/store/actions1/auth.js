@@ -8,7 +8,7 @@ const endpoint = 'http://localhost:1717'
 const errorHandler = (error) => (error.response ? error.response.data : error.message)
 
 export const getLogin = (body) => (dispatch) => {
-  dispatch({ type: 'LOGIN_SUCCESS' })
+  dispatch({ type: 'LOGIN_LOADING' })
   fetch(`${endpoint}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -28,12 +28,31 @@ export const getLogin = (body) => (dispatch) => {
     })
 }
 
-export const getToken = (token) => ({
-  type: 'GET_TOKEN',
-  token,
-})
+export const signUp = (body) => (dispatch) => {
+  fetch('http://localhost:1717/signin', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+    .then((response) => {
+      if (!response.ok) throw response.status
+      return response.json()
+    })
+    .then(() => {
+      // window.localStorage.setItem('user', data.user)
+    })
+    .catch((error) => {
+      dispatch({ type: 'LOGIN_FAILED', error: errorHandler(error) })
+      // setError('Неизвестная ошибка')
+    })
+}
 
 export const getMyProfile = (myProfile) => ({
   type: 'GET_MY_PROFILE',
   myProfile,
+})
+
+export const getToken = (token) => ({
+  type: 'GET_TOKEN',
+  token,
 })

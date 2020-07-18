@@ -58,6 +58,12 @@ h1 {
   font-size: 14px;
 }
 
+.image {
+  padding: 10px 0;
+  border: none;
+  width: auto;
+}
+
 .form label {
   line-height: 20px;
   display: block;
@@ -118,9 +124,8 @@ h1 {
 .form button {
   display: block;
   appearance: none;
-  margin-top: 40px;
+  margin-top: 10px;
   border: 1px solid #333;
-  margin-bottom: 20px;
   text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 4px;

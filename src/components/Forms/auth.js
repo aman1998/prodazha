@@ -39,7 +39,7 @@ const Auth = () => {
       })
       .catch((errorStatus) => {
         if (errorStatus === 403) setError('Неверный логин/пароль')
-        else setError('Неизвестная ошибка')
+        else setError('Неверный логин или пароль')
       })
   }
 

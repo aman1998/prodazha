@@ -44,8 +44,6 @@ const ProfileInfo = ({ token, profile, getMyProfile, getToken, edit, showEdit })
       })
   }
 
-  console.log('profile', profile)
-
   const handleImageUpload = (e) => {
     const reader = new FileReader()
     const file = e.target.files[0]
@@ -59,13 +57,14 @@ const ProfileInfo = ({ token, profile, getMyProfile, getToken, edit, showEdit })
   }
   const deleteUser = () => {
     localStorage.removeItem('token')
-    getToken(false)
+    getToken('')
     setRedirect(true)
   }
 
   const editUser = () => {
     showEdit(true)
   }
+
   return (
     <div className={styles.profile}>
       {redirect ? <Redirect to="/" /> : null}
