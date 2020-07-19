@@ -1,10 +1,10 @@
 import React from 'react'
 import PageTemplateProfile from '../../components/pageTemplates/PageProfiles'
-import styles from './profile.module.css'
+import UserSales from '../../components/UserSales'
 
 const List = () => (
   <PageTemplateProfile>
-    <div className={styles.profiles__container}>Объявления</div>
+    <UserSales />
   </PageTemplateProfile>
 )
 

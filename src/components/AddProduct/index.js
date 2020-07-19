@@ -4,7 +4,7 @@ import AddList from '../Forms/addList'
 import { addSale as addSaleAction, changeField } from '../../store/actions1'
 
 const AddProduct = () => {
-  const { token, title, price, category, image, imagesList } = useSelector(
+  const { token, title, price, category, image, imagesList, profile } = useSelector(
     (state) => ({
       profiles: state.profiles,
       login: state.login,
@@ -14,6 +14,7 @@ const AddProduct = () => {
       image: state.sales.description.image,
       imagesList: state.sales.description.imagesList,
       token: state.auth.token,
+      profile: state.auth.myProfile,
     }))
 
   const dispatch = useDispatch()
@@ -24,7 +25,8 @@ const AddProduct = () => {
   const changeStatusGet = (fieldName, value) => dispatch(changeField('get', fieldName, value))
 
   const handleAdd = () => {
-    const newAddList = { title, price, category, image, imagesList }
+    const userId = profile.id
+    const newAddList = { title, price, category, image, imagesList, userId }
     changeValue('title', '')
     changeValue('price', '')
     changeToken('token', localStorage.getItem('token'))

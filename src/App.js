@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './pages/HomePage'
 import Login from './pages/Login'
 import Profile from './pages/ProfilePage'
-import ProfileList from './pages/ProfilePage/list'
+import ProfileList from './pages/ProfilePage/myList'
 import ProfileFavorites from './pages/ProfilePage/favorites' 
 import ProfileUsers from './pages/ProfilePage/users' 
 import Add from './pages/AddPage'
@@ -12,8 +12,34 @@ import Household from './pages/Subpages/household'
 import Clothing from './pages/Subpages/clothing'
 import Cars from './pages/Subpages/cars'
 import Property from './pages/Subpages/property'
+import { useSelector, useDispatch } from 'react-redux'
+import { getMyProfile as getMyProfileAction,  getSales as getSalesAction} from './store/actions1'
+
 
 const App = () => {
+  const { token, edit, success } = useSelector(
+    (state) => ({
+      edit: state.reducer.edit,
+      token: state.auth.token,
+      success: state.sales.get.success,
+    }))
+  const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    const getSales = () => dispatch(getSalesAction())
+  if (!success) getSales()
+    if (token) {
+      fetch('http://localhost:1717/profile', {
+        method: 'GET',
+        headers: { 'X-Auth': `${token}` },
+      })
+        .then((response) => response.json())
+        .then(({ data }) => {
+          const getMyProfile = (profile) => dispatch(getMyProfileAction(profile))
+          getMyProfile(data)
+        })
+    }
+  }, [token, edit, dispatch])
   return (
     <BrowserRouter>
       <Switch>

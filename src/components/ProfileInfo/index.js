@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { string, func, object, bool } from 'prop-types'
+import { func, object } from 'prop-types'
 import { Redirect, NavLink } from 'react-router-dom'
 import styles from './style.module.css'
 import UserInfo from '../UserInfo'
@@ -10,23 +10,10 @@ import { getMyProfile as getMyProfileAction, getToken as getTokenAction } from '
 import logo from '../Icons/upload.svg'
 import Button from '../Forms/button'
 
-const ProfileInfo = ({ token, profile, getMyProfile, getToken, edit, showEdit }) => {
+const ProfileInfo = ({ profile, getMyProfile, getToken, showEdit }) => {
   const [image, setImage] = React.useState('')
   const [redirect, setRedirect] = React.useState(false)
 
-  React.useEffect(() => {
-    if (token) {
-      fetch('http://localhost:1717/profile', {
-        method: 'GET',
-        headers: { 'X-Auth': `${token}` },
-      })
-        .then((response) => response.json())
-        .then(({ data }) => {
-          getMyProfile(data)
-        // changeValue('profile', data)
-        })
-    }
-  }, [getMyProfile, token, edit])
   const addHandleImage = () => {
     fetch(`http://localhost:1717/edit-profile/${profile.id}`, {
       method: 'PUT',
@@ -94,12 +81,10 @@ const ProfileInfo = ({ token, profile, getMyProfile, getToken, edit, showEdit })
 }
 
 ProfileInfo.propTypes = {
-  token: string,
   profile: object,
   getMyProfile: func,
   getToken: func,
   showEdit: func,
-  edit: bool,
 
 }
 
