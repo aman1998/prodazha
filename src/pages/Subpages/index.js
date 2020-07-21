@@ -7,9 +7,10 @@ import IconsBtn from '../../components/IconsBtn'
 import { getSales as getSalesAction } from '../../store/actions1'
 
 const SubPage = ({ category }) => {
-  const { success, sales } = useSelector((state) => ({
+  const { success, sales, favoritesList } = useSelector((state) => ({
     sales: state.sales.data,
     success: state.sales.get.success,
+    favoritesList: state.auth.myProfile.favoritesList,
   }))
 
   const dispatch = useDispatch()
@@ -29,7 +30,7 @@ const SubPage = ({ category }) => {
                 <img className={styles.img} alt="#" src={list.image} />
                 <p>{`${list.price} сом`}</p>
                 <div>{list.title}</div>
-                <IconsBtn />
+                <IconsBtn id={list.id} status={favoritesList.includes(list.id)} />
               </div>
             )
             : null

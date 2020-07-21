@@ -1,26 +1,20 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import styles from './styles.module.css'
 import IconsBtn from '../IconsBtn'
-import { getSales as getSalesAction } from '../../store/actions1'
 
 const GetProducts = () => {
-  const { search, sales, loading, success, failed, error } = useSelector((state) => ({
-    search: state.reducer.search,
-    sales: state.sales.data,
-    loading: state.sales.get.loading,
-    success: state.sales.get.success,
-    failed: state.sales.get.failed,
-    error: state.sales.get.error,
-    description: state.sales.description,
-  }))
-
-  const dispatch = useDispatch()
-
-  React.useEffect(() => {
-    const getSales = () => dispatch(getSalesAction())
-    if (!success) getSales()
-  }, [dispatch, sales, success])
+  const { search, sales, loading, success, failed, error, favoritesList } = useSelector(
+    (state) => ({
+      search: state.reducer.search,
+      sales: state.sales.data,
+      loading: state.sales.get.loading,
+      success: state.sales.get.success,
+      failed: state.sales.get.failed,
+      error: state.sales.get.error,
+      description: state.sales.description,
+      favoritesList: state.auth.myProfile.favoritesList,
+    }))
 
   return (
     <div>
@@ -34,7 +28,7 @@ const GetProducts = () => {
               <img className={styles.img} alt="#" src={list.image} />
               <p>{`${list.price} сом`}</p>
               <div>{list.title}</div>
-              <IconsBtn id={list.id} />
+              <IconsBtn id={list.id} status={favoritesList.includes(list.id)} />
             </div>
           ))}
       </div>

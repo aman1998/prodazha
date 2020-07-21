@@ -9,12 +9,14 @@ const PageTemplate = ({ children }) => {
   }))
 
   return (
+    <div>
+      {login ? <Login /> : null}
     <div style={{ position: 'relative'} }>
       <div style={login ? {opacity: '0.5', pointerEvents: 'none'} : {opacity: '1'}}>
         <Nav />
         {children}
       </div>
-      {login ? <Login /> : null}
+    </div>
     </div>
   )
 }

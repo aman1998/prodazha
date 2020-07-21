@@ -19,6 +19,7 @@ export const getSales = () => (dispatch) => {
     .then((response) => checkResponse(response, 'Ошибка загрузки'))
     .then((data) => {
       dispatch({ type: 'GET_SALES_SUCCESS', data })
+      console.log('sales', data)
     })
     .catch((error) => {
       dispatch({ type: 'GET_SALES_FAILED', error: errorHandler(error) })

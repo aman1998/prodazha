@@ -1,7 +1,6 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-// import { string, bool } from 'prop-types'
+import { string, bool } from 'prop-types'
 import { showLogin } from '../../store/actions'
 import { getToken as getTokenAction } from '../../store/actions1'
 import styles from './forms.module.css'
@@ -72,16 +71,13 @@ const Auth = () => {
                     </div>
                   )
             }
-      {token ? <Redirect to="/profile" /> : null}
     </div>
   )
 }
 
-// Auth.propTypes = {
-//   token: string.isRequired,
-//   username: string.isRequired,
-//   password: string.isRequired,
-//   profile: bool,
-// }
+useSelector.propTypes = {
+  token: string.isRequired,
+  profile: bool,
+}
 
 export default Auth

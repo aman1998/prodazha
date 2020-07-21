@@ -10,7 +10,9 @@ const PageTemplateProfiles = ({ children }) => {
     login: state.reducer.login,
   }))
   return(
-    <div style={{position: 'relative'}}>
+    <div>
+      {login ? <div><Login /></div> : null}
+      <div style={{position: 'relative'}}>
       <div className={styles.container} style={login ? {opacity: '0.5', pointerEvents: 'none'} : {opacity: '1'}}> 
         <div className={styles.page}>
           <Nav />
@@ -20,7 +22,7 @@ const PageTemplateProfiles = ({ children }) => {
         </div>
         <div className={styles.children}>{children}</div>
       </div>
-      {login ? <div className={styles.modal}><Login /></div> : null}
+    </div>
     </div>
 )}
 

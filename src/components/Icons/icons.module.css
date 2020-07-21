@@ -4,12 +4,13 @@
     fill: #fff;
 }
 
-.user, .icon {
+.user, .phone, .icon {
+    margin-right: 5px;
     fill: #fff;
     transition: 0.5s;
 }
 
-.heart, .message, .delete {
+.heart, .message, .delete, .phone {
     width: 20px;
     height: 20px;
     fill: rgb(143, 130, 130);
@@ -46,4 +47,8 @@
 
 .icon:hover {
     fill: rgb(87, 83, 78);
+}
+
+.phone:hover {
+    fill: rgb(100, 197, 100);
 }

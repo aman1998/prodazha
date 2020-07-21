@@ -22,3 +22,8 @@ export const getUsers = () => (dispatch) => {
   //     dispatch({ type: 'GET_USERS_FAILED', error: errorHandler(error) })
   //   })
 }
+
+export const getFavoritesList = (favoritesData) => ({
+  type: 'GET_FAVORITES_LIST',
+  favoritesData,
+})

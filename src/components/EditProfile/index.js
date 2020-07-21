@@ -14,10 +14,10 @@ const EditProfile = () => {
   const dispatch = useDispatch()
   const showEdit = (edit) => dispatch(showEditAction(edit))
 
-  const [firstname, setFirstname] = React.useState('')
-  const [lastname, setLastname] = React.useState('')
-  const [phone, setPhone] = React.useState('')
-  const [mail, setMail] = React.useState('')
+  const [firstname, setFirstname] = React.useState(profile.firstname)
+  const [lastname, setLastname] = React.useState(profile.lastname)
+  const [phone, setPhone] = React.useState(profile.phone)
+  const [mail, setMail] = React.useState(profile.mail)
 
   const changeProfile = () => {
     const getMyProfile = () => dispatch(getMyProfileAction(profile))
@@ -34,10 +34,6 @@ const EditProfile = () => {
       .then((data) => {
         getMyProfile(data)
         showEdit(false)
-        setFirstname('')
-        setLastname('')
-        setPhone('')
-        setMail('')
         console.log(data)
       })
   }

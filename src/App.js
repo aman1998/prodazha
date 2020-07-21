@@ -17,17 +17,18 @@ import { getMyProfile as getMyProfileAction,  getSales as getSalesAction} from '
 
 
 const App = () => {
-  const { token, edit, success } = useSelector(
+  const { token, edit, success, favoritesList } = useSelector(
     (state) => ({
       edit: state.reducer.edit,
       token: state.auth.token,
       success: state.sales.get.success,
+      favoritesList: state.auth.myProfile.favoritesList,
     }))
   const dispatch = useDispatch()
 
   React.useEffect(() => {
     const getSales = () => dispatch(getSalesAction())
-  if (!success) getSales()
+    if (!success) getSales()
     if (token) {
       fetch('http://localhost:1717/profile', {
         method: 'GET',
@@ -37,9 +38,10 @@ const App = () => {
         .then(({ data }) => {
           const getMyProfile = (profile) => dispatch(getMyProfileAction(profile))
           getMyProfile(data)
+          console.log(data)
         })
     }
-  }, [token, edit, dispatch])
+  }, [token, edit, dispatch, success])
   return (
     <BrowserRouter>
       <Switch>

@@ -1,6 +1,5 @@
 const initialState = {
   data: [],
-  favoriteData: [],
   searchResult: '',
   description: {
     title: '',

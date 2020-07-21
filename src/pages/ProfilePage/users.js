@@ -50,9 +50,6 @@ const Users = () => {
               <div className={styles.user__title}>Почта</div>
               <div>{user.data.mail}</div>
             </div>
-            <div className={styles.user__operation}>
-              <div className={styles.user__title}>Операция</div>
-            </div>
           </div>
         )) : 'Вы не авторизованы'}
       </div>

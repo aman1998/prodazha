@@ -1,6 +1,8 @@
 const initialState = {
   token: localStorage.getItem('token'),
-  myProfile: {},
+  myProfile: {
+    favoritesList: [],
+  },
   login: {
     success: false,
     loading: false,

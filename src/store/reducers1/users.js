@@ -1,5 +1,6 @@
 const initialState = {
   data: [],
+  favoritesData: [],
   get: {
     success: false,
     loading: false,
@@ -40,6 +41,11 @@ const reducer = (state = initialState, action) => {
           failed: true,
           error: action.error,
         },
+      }
+    case 'GET_FAVORITES_LIST':
+      return {
+        ...state,
+        favoritesData: action.favoritesData,
       }
     default:
       return state
