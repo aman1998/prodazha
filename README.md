@@ -1,6 +1,7 @@
 Данный проект служит площадкой для купли-продажи товаров.
 
 Проект был создан на основе библиотеки [Create React App](https://github.com/facebook/create-react-app).
+
 Техническое задание к проекту:  https://docs.google.com/document/d/1EXd8hedGM_U21G1BoZt5OTr0xBN9_s-HOKQZh93ThJw/edit
 
 Чтобы корректно работать с проектом надо склонировать API по следующей ссылке https://github.com/aman1998/my-project-api
