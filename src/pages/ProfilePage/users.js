@@ -28,16 +28,6 @@ const Users = () => {
         { failed && <div>Ошибка: {error}</div> }
         {success && token ? users.map((user) => (
           <div key={user.token} className={styles.users}>
-            <div className={styles.user__avatars}>
-              <div className={styles.user__title}>Фото</div>
-              <div className={styles.user__avatar}>
-                <img
-                  className={styles.avatars}
-                  src={user.data.image !== '' ? user.data.image : ''}
-                  alt="avatar"
-                />
-              </div>
-            </div>
             <div className={styles.user__name}>
               <div className={styles.user__title}>Имя пользователя</div>
               <div>{`${user.data.lastname} ${user.data.firstname}`}</div>

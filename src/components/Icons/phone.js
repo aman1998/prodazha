@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './icons.module.css'
-import { useSelecto, useSelector} from 'react-redux'
+import { useSelector} from 'react-redux'
 
 const Phone = () => {
 	const {phone} = useSelector((state) => ({
@@ -8,7 +8,7 @@ const Phone = () => {
 	}))
 	return(
 		// <svg  x="0px" y="0px" className={styles.phone} width="30.711px" height="30.711px">
-			<a href={`tel:${phone}`} style={{display: 'block'}} className={styles.phone}>
+			<a href={`tel: + 996${phone}`} style={{display: 'block'}} className={styles.phone}>
 			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" className={styles.phone} width="30.711px" height="30.711px" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 		 viewBox="0 0 30.711 30.711" xmlSpace="preserve">
 						<g>

@@ -28,7 +28,6 @@
 .title {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
 }
 
 .title div {
@@ -47,4 +46,11 @@
 .title--active {
     color: #305996d0;
     border-bottom: 1px solid #305996d0;
+}
+
+@media screen and (max-width: 500px) {
+    .login {
+        width: 300px;
+        padding: 5px 15px 10px 15px;
+    }
 }

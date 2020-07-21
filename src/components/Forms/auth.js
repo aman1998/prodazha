@@ -6,6 +6,8 @@ import { getToken as getTokenAction } from '../../store/actions1'
 import styles from './forms.module.css'
 import Input from './input'
 
+const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
+
 const Auth = () => {
   const [error, setError] = React.useState('')
   const [username, setUsername] = React.useState('')
@@ -22,7 +24,7 @@ const Auth = () => {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    fetch('http://localhost:1717/login', {
+    fetch(`${ENDOPOINT}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),

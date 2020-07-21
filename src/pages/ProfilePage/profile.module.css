@@ -6,7 +6,7 @@
 
 .users {
     display: grid;
-    grid-template-columns: 50px 3fr 2fr 2fr;
+    grid-template-columns: 2fr 2fr 2fr;
     grid-template-rows: 80px;
     margin-top: 10px;
     grid-gap: 10px;
@@ -23,13 +23,6 @@
 .user__title {
     margin-bottom: 5px;
 }
-
-.user__avatar {
-    cursor: pointer;
-    width: 100%;
-    height: 50px;
-}
-
 .profile{
     display: flex;
     margin-top: 10px;
@@ -55,6 +48,19 @@
 
 .label input {
     display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .users{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .users{
+        grid-template-columns: 1fr 1fr ;
+        grid-template-rows: 1fr ;
+    }
 }
 
 

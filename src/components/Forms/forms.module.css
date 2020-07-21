@@ -6,24 +6,16 @@ h1 {
     display: block;
     border: 1px solid #305996d0;
     width: 100%;
-    padding: 0 15px;
     margin-top: 0;
-    margin: 10px 0 15px; 
+    margin: 10px 0 10px; 
     line-height: 40px;
     border-radius: 20px;
     outline: none;
-}
-
-.auth, .registr {
-  padding: 5px 10px;
-  background: #305996d0;
-  transition: .5s;
-  cursor: pointer;
-}
-
-.auth, .registr {
-  background:  #305996;;
-  opacity: 1;
+    padding: 5px 10px;
+    background: #305996d0;
+    transition: .5s;
+    cursor: pointer;
+    opacity: 1;
 }
 
 .btn {
@@ -138,4 +130,15 @@ h1 {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+
+.photoCategory {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  .photoCategory {
+    display: block;
+  }
 }

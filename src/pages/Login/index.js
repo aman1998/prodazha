@@ -8,7 +8,7 @@ const Login = () => {
   const [auth, setAuth] = React.useState(true)
   return (
     <div className="container">
-      <form className={styles.login}>
+      <div className={styles.login}>
         <div className={styles.title}>
           {/* eslint-disable  */}
           <div
@@ -27,7 +27,7 @@ const Login = () => {
         </div>
         <Cancel />
         {auth ? <Auth /> : <Registr />}
-      </form>
+      </div>
     </div>
   )
 }

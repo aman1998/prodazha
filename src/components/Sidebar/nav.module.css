@@ -3,6 +3,7 @@
     background: rgba(12, 52, 75, 0.884);
     width: 100%;
     color: #fff;
+    height: 100vh;
 }
 
 .sidebar div {
@@ -17,4 +18,27 @@
 
 .active {
     color: rgb(0, 0, 0);
+}
+
+.mobile div{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile div{
+        display: block;
+    }
+    .desktop div {
+        display: none;
+    }
+    .sidebar {
+        padding: 0;
+    }
+    .sidebar div {
+        align-items: center;
+        margin-top: 10px;
+    }
+    .sidebar div:nth-child(1) {
+        margin-top: 0;
+    }
 }

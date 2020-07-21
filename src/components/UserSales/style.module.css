@@ -17,3 +17,20 @@
   height: 120px;
   background: rgb(136, 128, 128);
 }
+
+
+@media screen and (max-width: 768px) {
+  .wrapper{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 500px) {
+  .wrapper{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 350px) {
+  .wrapper{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

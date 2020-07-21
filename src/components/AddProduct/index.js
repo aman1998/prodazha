@@ -19,10 +19,10 @@ const AddProduct = () => {
     }))
 
   const dispatch = useDispatch()
-  // const changeProfile = (profile) => dispatch(showProfile(profile))
   const changeValue = (fieldName, value) => dispatch(changeField('description', fieldName, value))
   const changeToken = (fieldName, value) => dispatch(changeField('profiles', fieldName, value))
   const addSale = (data) => dispatch(addSaleAction(data))
+  // const getSales = () => dispatch(getSalesAction())
   const changeStatusGet = (fieldName, value) => dispatch(changeField('get', fieldName, value))
 
   const handleAdd = () => {
@@ -32,6 +32,7 @@ const AddProduct = () => {
     changeValue('price', '')
     changeToken('token', localStorage.getItem('token'))
     addSale(newAddList)
+    // getSales()
     changeStatusGet('success', false)
   }
 

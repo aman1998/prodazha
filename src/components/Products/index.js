@@ -1,10 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import styles from './styles.module.css'
 import IconsBtn from '../IconsBtn'
+import { getSales as getSalesAction } from '../../store/actions1'
 
 const GetProducts = () => {
-  const { search, sales, loading, success, failed, error, favoritesList } = useSelector(
+  const { search, sales, loading, success,
+    failed, error, favoritesList, token, edit } = useSelector(
     (state) => ({
       search: state.reducer.search,
       sales: state.sales.data,
@@ -14,14 +16,23 @@ const GetProducts = () => {
       error: state.sales.get.error,
       description: state.sales.description,
       favoritesList: state.auth.myProfile.favoritesList,
+      edit: state.reducer.edit,
+      token: state.auth.token,
     }))
+
+  const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    const getSales = () => dispatch(getSalesAction())
+    if (!success) getSales()
+  }, [token, edit, dispatch, success])
 
   return (
     <div>
       <div className={`container ${styles.wrapper}`}>
         { loading && <div>Загрузка...</div> }
         { failed && <div>Ошибка: {error}</div> }
-        { success
+        { success && token
         && sales.filter((item) => item.title.toLowerCase().includes(search.toLowerCase())).map(
           (list) => (
             <div key={list.id} className={styles.block}>

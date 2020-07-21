@@ -56,7 +56,7 @@ const Add = ({ onClick }) => {
           />
           <ErrorMessage error={errors.price} />
         </label>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className={styles.photoCategory}>
           <label htmlFor="avatar" className={styles.label}>
             <div>Фото:</div>
             <input

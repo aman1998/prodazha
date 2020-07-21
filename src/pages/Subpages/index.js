@@ -7,10 +7,11 @@ import IconsBtn from '../../components/IconsBtn'
 import { getSales as getSalesAction } from '../../store/actions1'
 
 const SubPage = ({ category }) => {
-  const { success, sales, favoritesList } = useSelector((state) => ({
+  const { success, sales, search, favoritesList } = useSelector((state) => ({
     sales: state.sales.data,
     success: state.sales.get.success,
     favoritesList: state.auth.myProfile.favoritesList,
+    search: state.reducer.search,
   }))
 
   const dispatch = useDispatch()
@@ -23,7 +24,8 @@ const SubPage = ({ category }) => {
   return (
     <PageTemplate>
       <div className={`container ${styles.wrapper}`}>
-        { sales.map((list) => (
+        {
+        sales.map((list) => (
           list.category === category
             ? (
               <div key={list.id} className={styles.block}>
@@ -34,7 +36,8 @@ const SubPage = ({ category }) => {
               </div>
             )
             : null
-        ))}
+        ))
+}
       </div>
     </PageTemplate>
   )

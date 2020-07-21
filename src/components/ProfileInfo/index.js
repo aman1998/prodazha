@@ -4,44 +4,46 @@ import { func, object } from 'prop-types'
 import { Redirect, NavLink } from 'react-router-dom'
 import styles from './style.module.css'
 import UserInfo from '../UserInfo'
-import Avatar from '../Avatar'
+// import Avatar from '../Avatar'
 import { showLogin, showEdit as showEditAction } from '../../store/actions'
 import { getMyProfile as getMyProfileAction, getToken as getTokenAction } from '../../store/actions1'
-import logo from '../Icons/upload.svg'
+// import logo from '../Icons/upload.svg'
 import Button from '../Forms/button'
 
-const ProfileInfo = ({ profile, getMyProfile, getToken, showEdit }) => {
-  const [image, setImage] = React.useState('')
+// const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
+
+const ProfileInfo = ({ profile, getToken, showEdit }) => {
+  // const [image, setImage] = React.useState('')
   const [redirect, setRedirect] = React.useState(false)
 
-  const addHandleImage = () => {
-    fetch(`http://localhost:1717/edit-profile/${profile.id}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        image,
-      }),
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        getMyProfile(data)
-        console.log(data)
-      })
-  }
+  // const addHandleImage = () => {
+  //   fetch(`${ENDOPOINT}/edit-profile/${profile.id}`, {
+  //     method: 'PUT',
+  //     body: JSON.stringify({
+  //       image,
+  //     }),
+  //     headers: {
+  //       'Content-type': 'application/json',
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       getMyProfile(data)
+  //       console.log(data)
+  //     })
+  // }
 
-  const handleImageUpload = (e) => {
-    const reader = new FileReader()
-    const file = e.target.files[0]
-    if (file) reader.readAsDataURL(file)
-    reader.onload = () => {
-      setImage(reader.result)
-    }
-    reader.onerror = (error) => {
-      console.log(error)
-    }
-  }
+  // const handleImageUpload = (e) => {
+  //   const reader = new FileReader()
+  //   const file = e.target.files[0]
+  //   if (file) reader.readAsDataURL(file)
+  //   reader.onload = () => {
+  //     setImage(reader.result)
+  //   }
+  //   reader.onerror = (error) => {
+  //     console.log(error)
+  //   }
+  // }
   const deleteUser = () => {
     localStorage.removeItem('token')
     getToken('')
@@ -55,9 +57,9 @@ const ProfileInfo = ({ profile, getMyProfile, getToken, showEdit }) => {
   return (
     <div className={styles.profile}>
       {redirect ? <Redirect to="/" /> : null}
+      <h2>{`Добро пожаловать, ${profile.firstname}`}</h2>
       <div className={styles.profileInfo}>
         <div>
-          <h2>{`Добро пожаловать, ${profile.firstname}`}</h2>
           <UserInfo
             firstname={profile.firstname}
             lastname={profile.lastname}
@@ -65,11 +67,11 @@ const ProfileInfo = ({ profile, getMyProfile, getToken, showEdit }) => {
             phone={profile.phone}
           />
         </div>
-        <Avatar
+        {/* <Avatar
           image={profile.image !== '' ? profile.image : logo}
           onChange={handleImageUpload}
           onClick={addHandleImage}
-        />
+        /> */}
       </div>
       <Button value="выйти" onClick={deleteUser} />
       <Button value="Редактировать" onClick={editUser} />
@@ -82,7 +84,7 @@ const ProfileInfo = ({ profile, getMyProfile, getToken, showEdit }) => {
 
 ProfileInfo.propTypes = {
   profile: object,
-  getMyProfile: func,
+  // getMyProfile: func,
   getToken: func,
   showEdit: func,
 

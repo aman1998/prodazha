@@ -1,5 +1,4 @@
 import React from 'react'
-// import { string } from 'prop-types'
 import styles from './style.module.css'
 
 const UserInfo = ({ firstname, lastname, username, phone }) => (
@@ -12,11 +11,5 @@ const UserInfo = ({ firstname, lastname, username, phone }) => (
     </div>
   </div>
 )
-
-// UserInfo.propTypes = {
-//   firstname: string.isRequired,
-//   lastname: string.isRequired,
-//   username: string.isRequired,
-// }
 
 export default UserInfo

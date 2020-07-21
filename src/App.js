@@ -15,14 +15,15 @@ import Property from './pages/Subpages/property'
 import { useSelector, useDispatch } from 'react-redux'
 import { getMyProfile as getMyProfileAction,  getSales as getSalesAction} from './store/actions1'
 
+const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
+
 
 const App = () => {
-  const { token, edit, success, favoritesList } = useSelector(
+  const { token, edit, success } = useSelector(
     (state) => ({
       edit: state.reducer.edit,
       token: state.auth.token,
       success: state.sales.get.success,
-      favoritesList: state.auth.myProfile.favoritesList,
     }))
   const dispatch = useDispatch()
 
@@ -30,7 +31,7 @@ const App = () => {
     const getSales = () => dispatch(getSalesAction())
     if (!success) getSales()
     if (token) {
-      fetch('http://localhost:1717/profile', {
+      fetch(`${ENDOPOINT}/profile`, {
         method: 'GET',
         headers: { 'X-Auth': `${token}` },
       })
@@ -38,7 +39,7 @@ const App = () => {
         .then(({ data }) => {
           const getMyProfile = (profile) => dispatch(getMyProfileAction(profile))
           getMyProfile(data)
-          console.log(data)
+          // console.log(data)
         })
     }
   }, [token, edit, dispatch, success])

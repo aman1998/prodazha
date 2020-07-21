@@ -1,4 +1,4 @@
-const endpoint = 'http://localhost:1717'
+const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
 
 // функция проверят успешно ли отправился запрос
 const checkResponse = (response, errText) => {
@@ -15,7 +15,7 @@ export const showSearchResult = (searchResult) => ({
 
 export const getSales = () => (dispatch) => {
   dispatch({ type: 'GET_SALES_LOADING' })
-  fetch(`${endpoint}/list`)
+  fetch(`${ENDOPOINT}/list`)
     .then((response) => checkResponse(response, 'Ошибка загрузки'))
     .then((data) => {
       dispatch({ type: 'GET_SALES_SUCCESS', data })
@@ -28,7 +28,7 @@ export const getSales = () => (dispatch) => {
 
 export const deleteSales = (id) => (dispatch) => {
   dispatch({ type: 'DELETE_SALES_LOADING' })
-  fetch(`${endpoint}/delete/${id}`, {
+  fetch(`${ENDOPOINT}/delete/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-type': 'application/json',
@@ -45,7 +45,7 @@ export const deleteSales = (id) => (dispatch) => {
 
 export const addSale = (body) => (dispatch) => {
   dispatch({ type: 'ADD_TODO_LOADING' })
-  fetch(`${endpoint}/add`, {
+  fetch(`${ENDOPOINT}/add`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -62,7 +62,7 @@ export const addSale = (body) => (dispatch) => {
 
 export const addFavoritesSales = (body) => (dispatch) => {
   dispatch({ type: 'ADD_FAVORITE_LOADING' })
-  fetch(`${endpoint}/favorites`, {
+  fetch(`${ENDOPOINT}/favorites`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),

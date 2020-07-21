@@ -7,12 +7,13 @@ import Delete from '../Icons/delete'
 import Phone from '../Icons/phone'
 import { deleteSales as deleteSalesActions, changeField, getSales as getSalesAction } from '../../store/actions1/sales'
 
-const endpoint = 'http://localhost:1717'
+const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
 
 const IconsBtn = ({ id, status }) => {
-  const { profile } = useSelector(
+  const { profile, admin } = useSelector(
     (state) => ({
       profile: state.auth.myProfile,
+      admin: state.auth.myProfile.isAdmin,
     }))
   const dispatch = useDispatch()
   const deleteSales = () => dispatch(deleteSalesActions(id))
@@ -26,7 +27,7 @@ const IconsBtn = ({ id, status }) => {
 
   const handleAddFavoriteSales = () => {
     const idList = id
-    fetch(`${endpoint}/favorites/${profile.id}`, {
+    fetch(`${ENDOPOINT}/favorites/${profile.id}`, {
       method: 'PUT',
       body: JSON.stringify({
         idList,
@@ -46,7 +47,7 @@ const IconsBtn = ({ id, status }) => {
     <div className={styles.icons}>
       <Phone />
       {/* eslint-disable-next-line */}
-      <div className={styles.delete} onClick={handleDeleteSale}><Delete /></div>
+      {admin ? <div className={styles.delete} onClick={handleDeleteSale}><Delete /></div> : null}
       <div className={styles.heart}><Heart onClick={handleAddFavoriteSales} status={status} /></div>
     </div>
 

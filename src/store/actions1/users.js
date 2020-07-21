@@ -1,8 +1,8 @@
-const endpoint = 'http://localhost:1717'
+const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
 
 export const getUsers = () => (dispatch) => {
   dispatch({ type: 'GET_USERS_LOADING' })
-  fetch(`${endpoint}/users-list`, {
+  fetch(`${ENDOPOINT}/users-list`, {
     method: 'GET',
   })
     .then((response) => response.json())

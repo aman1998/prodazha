@@ -10,14 +10,14 @@ const PageTemplateProfiles = ({ children }) => {
     login: state.reducer.login,
   }))
   return(
-    <div>
+    <div >
       {login ? <div><Login /></div> : null}
       <div style={{position: 'relative'}}>
       <div className={styles.container} style={login ? {opacity: '0.5', pointerEvents: 'none'} : {opacity: '1'}}> 
         <div className={styles.page}>
           <Nav />
-          <div className={styles.content}>
-            <SideBar />
+          <div className={styles.sidebar}>
+          <SideBar />
           </div>
         </div>
         <div className={styles.children}>{children}</div>

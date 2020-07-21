@@ -5,6 +5,8 @@ import { getMyProfile as getMyProfileAction } from '../../store/actions1'
 import { showEdit as showEditAction } from '../../store/actions'
 import Input from '../Forms/input'
 
+const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
+
 const EditProfile = () => {
   const { profile } = useSelector((state) => ({
     profile: state.auth.myProfile,
@@ -21,7 +23,7 @@ const EditProfile = () => {
 
   const changeProfile = () => {
     const getMyProfile = () => dispatch(getMyProfileAction(profile))
-    fetch(`http://localhost:1717/edit-profile-info/${profile.id}`, {
+    fetch(`${ENDOPOINT}/edit-profile-info/${profile.id}`, {
       method: 'PUT',
       body: JSON.stringify({
         firstname, lastname, phone, mail,

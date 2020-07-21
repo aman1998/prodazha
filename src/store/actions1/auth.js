@@ -1,4 +1,4 @@
-const endpoint = 'http://localhost:1717'
+const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
 
 // const checkResponse = (response, errText) => {
 //   if (!response.ok) throw new Error(errText)
@@ -9,7 +9,7 @@ const errorHandler = (error) => (error.response ? error.response.data : error.me
 
 export const getLogin = (body) => (dispatch) => {
   dispatch({ type: 'LOGIN_LOADING' })
-  fetch(`${endpoint}/login`, {
+  fetch(`${ENDOPOINT}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -29,7 +29,7 @@ export const getLogin = (body) => (dispatch) => {
 }
 
 export const signUp = (body) => (dispatch) => {
-  fetch('http://localhost:1717/signin', {
+  fetch(`${ENDOPOINT}/signin`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
