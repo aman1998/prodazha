@@ -32,7 +32,7 @@ const GetProducts = () => {
       <div className={`container ${styles.wrapper}`}>
         { loading && <div>Загрузка...</div> }
         { failed && <div>Ошибка: {error}</div> }
-        { success && token
+        { success
         && sales.filter((item) => item.title.toLowerCase().includes(search.toLowerCase())).map(
           (list) => (
             <div key={list.id} className={styles.block}>

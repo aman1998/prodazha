@@ -15,7 +15,7 @@ const Registr = () => {
   const [phone, setPhone] = React.useState('')
   const [image] = React.useState('')
   const [isAdmin] = React.useState(false)
-  const [favorites] = React.useState([])
+  const [favoritesList] = React.useState([])
 
   const dispatch = useDispatch()
   const signUp = (data) => dispatch(signUpActions(data))
@@ -23,7 +23,7 @@ const Registr = () => {
 
   const handleSignin = () => {
     const body = {
-      firstname, lastname, username, password, phone, mail, image, isAdmin, favorites,
+      firstname, lastname, username, password, phone, mail, image, isAdmin, favoritesList,
     }
     signUp(body)
     setUsername('')
