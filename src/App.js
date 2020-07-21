@@ -44,7 +44,7 @@ const App = () => {
     }
   }, [token, edit, dispatch, success])
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/prodazha'>
       <Switch>
         <Route path='/' component={Home} exact/>
         <Route path='/login' component={Login} exact/>
