@@ -63,6 +63,31 @@ header {
     display: none;
 }
 
+.header__menu nav ul li{
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+} 
+
+.header__menu nav ul li:hover{background: rgba(0,0,0,.15);}
+.header__menu nav ul li:hover > ul{display: block;}
+.header__menu nav ul li{
+    float: left;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+} 
+
+.header__menu nav ul ul{
+    display: none;
+    position: absolute; 
+}
+.header__menu nav ul ul li{float: none; position: relative;}
+.header__menu nav ul ul ul {
+        position: absolute; 
+        top:0;
+    }	
+
 
 @media screen and (max-width: 900px) {
     header {

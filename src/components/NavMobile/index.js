@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { showLogin } from '../../store/actions'
 import styles from './style.module.css'
 import NavIcon from '../Icons/icon'
 
@@ -7,9 +9,17 @@ const NavMobile = () => {
   const [nav, setNav] = React.useState(false)
   const [category, setCategory] = React.useState(false)
 
+  const dispatch = useDispatch()
+  const changeLogin = (login) => dispatch(showLogin(login))
+
   const toggleNav = () => {
     setNav(!nav)
     setCategory(false)
+  }
+
+  const openModal = () => {
+    document.body.classList.add('modal-open')
+    changeLogin(true)
   }
 
   return (
@@ -35,7 +45,7 @@ const NavMobile = () => {
                     )
                       : null}
                   </li>
-                  <li>Вход</li>
+                  <li><div style={{ cursor: 'pointer' }} onClick={openModal}>Вход</div></li>
                 </ul>
               )
               : null}

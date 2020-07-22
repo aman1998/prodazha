@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getMyProfile as getMyProfileAction,  getSales as getSalesAction} from './store/actions1'
 
 const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
+// const ENDOPOINT = 'http://localhost:1717'
 
 
 const App = () => {

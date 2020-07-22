@@ -29,15 +29,15 @@ const Users = () => {
         {success && token ? users.map((user) => (
           <div key={user.token} className={styles.users}>
             <div className={styles.user__name}>
-              <div className={styles.user__title}>Имя пользователя</div>
+              <i className={styles.user__title}>Имя пользователя</i>
               <div>{`${user.data.lastname} ${user.data.firstname}`}</div>
             </div>
             <div className={styles.user__phone}>
-              <div className={styles.user__title}>Телефон</div>
+              <i className={styles.user__title}>Телефон</i>
               <div>{user.data.phone}</div>
             </div>
             <div className={styles.user__mail}>
-              <div className={styles.user__title}>Почта</div>
+              <i className={styles.user__title}>Почта</i>
               <div>{user.data.mail}</div>
             </div>
           </div>

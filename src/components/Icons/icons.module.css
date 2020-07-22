@@ -4,13 +4,13 @@
     fill: #fff;
 }
 
-.user, .phone, .icon {
+.user, .profile, .list, .phone, .icon {
     margin-right: 5px;
     fill: #fff;
     transition: 0.5s;
 }
 
-.heart, .message, .delete, .phone {
+.heart, .message, .list, .profile, .delete, .phone {
     width: 20px;
     height: 20px;
     fill: rgb(143, 130, 130);

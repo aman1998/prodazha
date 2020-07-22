@@ -8,11 +8,6 @@ import NavMobile from '../NavMobile'
 import UserIcon from '../Icons/user'
 
 const MainNav = () => {
-  const menuItem = [
-    { id: 1, link: '/', text: 'Главное' },
-    { id: 3, link: '/profile', text: 'Личный кабинет' },
-  ]
-
   const dispatch = useDispatch()
   const changeLogin = (login) => dispatch(showLogin(login))
 
@@ -37,20 +32,29 @@ const MainNav = () => {
             >Добавить
             </NavLink>
           </li>
-          {
-                        menuItem.map((menu) => (
-                          <li key={menu.id}>
-                            <NavLink
-                              to={menu.link}
-                              className={styles.items}
-                              activeClassName={styles.active}
-                              exact
-                            >
-                              {menu.text}
-                            </NavLink>
-                          </li>
-                        ))
-                    }
+          <li>
+            <NavLink
+              to="./"
+              className={styles.items}
+              activeClassName={styles.active}
+              exact
+            >Главное
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="./profile"
+              className={styles.items}
+              activeClassName={styles.active}
+              exact
+            >Личный кабинет
+            </NavLink>
+            <ul>
+              <li><NavLink to="/list">Объявления</NavLink></li>
+              <li><NavLink to="/favorites">Избранное</NavLink></li>
+              <li><NavLink to="/users">Пользователи</NavLink></li>
+            </ul>
+          </li>
           {/* eslint-disable */}
           <li><div style={{ cursor: 'pointer' }} onClick={openModal}>Вход</div></li>
         </ul>

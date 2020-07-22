@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import styles from './style.module.css'
-import DeleteIcon from '../Icons/delete'
+import Phone from '../Icons/phone'
 
 const FavoritesSales = () => {
   const { sales, favoritesList } = useSelector((state) => ({
@@ -21,7 +21,7 @@ const FavoritesSales = () => {
                 <img className={styles.img} alt="#" src={list.image} />
                 <p>{`${list.price} сом`}</p>
                 <div>{list.title}</div>
-                <div><DeleteIcon /></div>
+                <Phone />
               </div>
             )
             : null

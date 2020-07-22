@@ -73,18 +73,21 @@ const ProfileInfo = ({ profile, getToken, showEdit }) => {
           onClick={addHandleImage}
         /> */}
       </div>
-      <Button value="выйти" onClick={deleteUser} />
-      <Button value="Редактировать" onClick={editUser} />
-      <button type="button" className={styles.btn}>
-        <NavLink to="/add" exact>Добавить объявление</NavLink>
-      </button>
+      <div className={styles.profileBtn}>
+        <div><Button value="выйти" onClick={deleteUser} /></div>
+        <div>
+          <button type="button" className={styles.btn}>
+            <NavLink to="/add" exact>Добавить объявление</NavLink>
+          </button>
+        </div>
+        <div><Button value="Редактировать" onClick={editUser} /></div>
+      </div>
     </div>
   )
 }
 
 ProfileInfo.propTypes = {
   profile: object,
-  // getMyProfile: func,
   getToken: func,
   showEdit: func,
 
@@ -104,16 +107,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileInfo)
-
-// const {login, token, profile, profiles, profilesList } = useSelector(state => ({
-//     login: state.login,
-//     profile: state.profile,
-//     profiles: state.profiles,
-//     token: state.profiles.token,
-//     profilesList: state.profiles.profilesList,
-// }))
-
-// const dispatch = useDispatch()
-// const changeLogin = (login) => dispatch(showLogin(login))
-// const changeProfile = (profiles) => dispatch(showProfile(profiles))
-// const changeValue = (fieldName, value) => dispatch(changeField('profiles', fieldName, value)

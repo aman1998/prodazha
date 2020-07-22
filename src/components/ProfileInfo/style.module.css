@@ -19,3 +19,17 @@
   background: #52779bd0;
   opacity: 1;
 }
+
+.profileBtn {
+  display: flex;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .profileBtn {
+    flex-direction: column;
+  }
+  .profileBtn div {
+    margin-top: 5px;
+  }
+}

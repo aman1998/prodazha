@@ -1,4 +1,5 @@
 const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
+// const ENDOPOINT = 'http://localhost:1717'
 
 // функция проверят успешно ли отправился запрос
 const checkResponse = (response, errText) => {
@@ -42,6 +43,23 @@ export const deleteSales = (id) => (dispatch) => {
       dispatch({ type: 'DELETE_SALES_FAILED', error: errorHandler(error) })
     })
 }
+
+// export const deleteFavoriteSales = (id) => (dispatch) => {
+//   dispatch({ type: 'DELETE_FAVORITE_LOADING' })
+//   fetch(`http://localhost:1717/favorite-delete/${id}`, {
+//     method: 'DELETE',
+//     headers: {
+//       'Content-type': 'application/json',
+//     },
+//   })
+//     .then((response) => checkResponse(response, 'Ошибка загрузки'))
+//     .then((data) => {
+//       dispatch({ type: 'DELETE_FAVORITE_SUCCESS', data })
+//     })
+//     .catch((error) => {
+//       dispatch({ type: 'DELETE_FAVORITE_FAILED', error: errorHandler(error) })
+//     })
+// }
 
 export const addSale = (body) => (dispatch) => {
   dispatch({ type: 'ADD_TODO_LOADING' })

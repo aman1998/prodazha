@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import styles from './nav.module.css'
 import Heart from '../Icons/heart'
 import User from '../Icons/user'
+import Profile from '../Icons/profile'
+import List from '../Icons/checklist'
 // import PageTemplate from '../pageTemplates/pageTemplate'
 
 const Sidebar = () => {
@@ -14,8 +16,8 @@ const Sidebar = () => {
   ]
 
   const profilesPageMobile = [
-    { id: 5, link: '/profile', icon: <User /> },
-    { id: 6, link: '/list', icon: <User /> },
+    { id: 5, link: '/profile', icon: <Profile /> },
+    { id: 6, link: '/list', icon: <List /> },
     { id: 7, link: '/favorites', icon: <Heart /> },
     { id: 8, link: '/users', icon: <User /> },
   ]
