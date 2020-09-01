@@ -1,11 +1,11 @@
 import React from 'react'
-import PageTemplateProfile from '../../components/pageTemplates/PageProfiles'
+import PageTemplate from '../../components/pageTemplates/'
 import UserSales from '../../components/UserSales'
 
 const List = () => (
-  <PageTemplateProfile>
+  <PageTemplate>
     <UserSales />
-  </PageTemplateProfile>
+  </PageTemplate>
 )
 
 export default List

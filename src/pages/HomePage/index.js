@@ -1,6 +1,5 @@
 import React from 'react'
-// import { useSelector, useDispatch } from 'react-redux'
-import PageTemplate from '../../components/pageTemplates/pageTemplate'
+import PageTemplate from '../../components/pageTemplates/'
 import Products from '../../components/Products'
 
 const Home = () => (

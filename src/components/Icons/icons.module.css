@@ -10,6 +10,10 @@
     transition: 0.5s;
 }
 
+.user {
+    fill: #4C5D87;;
+}
+
 .heart, .message, .list, .profile, .delete, .phone {
     width: 20px;
     height: 20px;

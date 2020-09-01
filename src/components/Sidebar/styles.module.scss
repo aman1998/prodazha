@@ -1,0 +1,37 @@
+$fz: 12px;
+
+.sidebar {
+  background-color: #111; 
+  height: 100%;
+  width: 256px;
+  position: fixed; 
+  background: #4C5D87;
+  padding: 28px 0px 338px 31px;
+  color: #FFFFFF;
+  &Title {
+    margin-bottom: 50px;
+  }
+  li {
+    margin-top: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: $fz;
+    cursor: pointer;
+    // line-height: 18px;
+  }
+  .active {
+    color: rgb(231, 212, 212);
+  }
+  li:nth-child(7) {
+    margin-top: 99px;
+  }
+  @media screen and (max-width: 992px) {
+      width: 200px;
+    }
+}
+
+
+
+
+
+

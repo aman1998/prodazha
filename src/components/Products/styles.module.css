@@ -8,11 +8,10 @@
 
 .block {
   border-radius: 5px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   padding: 5px;
-  border: 1px solid rgb(12, 11, 11);
-  /* height: 250px; */
-  /* background: gray; */
+  border: 1px solid #4C5D87;
+  color: #152650;
 }
 
 .img {

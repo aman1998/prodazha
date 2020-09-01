@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { string } from 'prop-types'
-import PageTemplate from '../../components/pageTemplates/pageTemplate'
+import PageTemplate from '../../components/pageTemplates/'
 import styles from './style.module.css'
 import IconsBtn from '../../components/IconsBtn'
 import { getSales as getSalesAction } from '../../store/actions1'

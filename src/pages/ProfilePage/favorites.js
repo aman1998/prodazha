@@ -1,11 +1,11 @@
 import React from 'react'
-import PageTemplateProfile from '../../components/pageTemplates/PageProfiles'
+import PageTemplate from '../../components/pageTemplates'
 import FavoritesSales from '../../components/FavoritesLSales'
 
 const Favorites = () => (
-  <PageTemplateProfile>
+  <PageTemplate>
     <FavoritesSales />
-  </PageTemplateProfile>
+  </PageTemplate>
 )
 
 export default Favorites

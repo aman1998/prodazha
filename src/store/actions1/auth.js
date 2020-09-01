@@ -1,4 +1,5 @@
 const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
+// const ENDOPOINT = 'http://localhost:1717'
 
 // const checkResponse = (response, errText) => {
 //   if (!response.ok) throw new Error(errText)

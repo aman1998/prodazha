@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import PageTemplateProfiles from '../../components/pageTemplates/PageProfiles'
+import PageTemplate from '../../components/pageTemplates/'
 import styles from './profile.module.css'
 import { getUsers as getUsersAction } from '../../store/actions1'
 
@@ -22,7 +22,7 @@ const Users = () => {
   }))
 
   return (
-    <PageTemplateProfiles>
+    <PageTemplate>
       <div className={styles.users__container}>
         { loading && <div>Загрузка...</div> }
         { failed && <div>Ошибка: {error}</div> }
@@ -43,7 +43,7 @@ const Users = () => {
           </div>
         )) : 'Вы не авторизованы'}
       </div>
-    </PageTemplateProfiles>
+    </PageTemplate>
   )
 }
 

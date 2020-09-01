@@ -1,0 +1,43 @@
+.header {
+  margin: 0 auto;
+  padding: 21px 25px 28px 36px;
+  height: 75px;
+  background: #F2F2F2;
+}
+.menu {
+  color: #4C5D87;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .active {
+    border-bottom: 1px solid #4C5D87;
+  }
+  // .activeIcon {
+  //   background: #C2E1DC;
+  // }
+  &Items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &Item {
+    margin-right: 45px;
+  }
+  .menuItem3 {
+    margin-right: 0;
+  }
+}
+.icons {
+  width: 27px;
+  height: 27px;
+}
+
+@media screen and (max-width: 992px) {
+  .menuItem {
+    width: 200px;
+    margin-right: 20px;
+  }
+}
+
+
+

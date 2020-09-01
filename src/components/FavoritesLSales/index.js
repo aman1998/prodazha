@@ -12,7 +12,7 @@ const FavoritesSales = () => {
   }))
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`container ${styles.wrapper}`}>
       {favoritesList.length !== 0 ? sales.map((list) => (
         favoritesList.map((arr) => (
           list.id === arr

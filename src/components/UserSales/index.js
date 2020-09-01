@@ -18,7 +18,7 @@ const UserList = () => {
   }, [dispatch, sales, success])
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`container ${styles.wrapper}`}>
       {
         sales.map((list) => (
           profile.id === list.userId

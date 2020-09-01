@@ -67,11 +67,6 @@ const ProfileInfo = ({ profile, getToken, showEdit }) => {
             phone={profile.phone}
           />
         </div>
-        {/* <Avatar
-          image={profile.image !== '' ? profile.image : logo}
-          onChange={handleImageUpload}
-          onClick={addHandleImage}
-        /> */}
       </div>
       <div className={styles.profileBtn}>
         <div><Button value="выйти" onClick={deleteUser} /></div>

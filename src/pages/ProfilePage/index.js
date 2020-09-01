@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { string, bool } from 'prop-types'
-import PageTemplateProfiles from '../../components/pageTemplates/PageProfiles'
+import PageTemplate from '../../components/pageTemplates'
 import ProfileInfo from '../../components/ProfileInfo'
 import styles from './profile.module.css'
 import Edit from '../../components/EditProfile'
 
 const Profile = ({ token, edit }) => (
-  <PageTemplateProfiles>
+  <PageTemplate>
     {token
       ? (
         <div className={styles.profiles__container}>
@@ -15,8 +15,10 @@ const Profile = ({ token, edit }) => (
           {edit && <Edit />}
         </div>
       )
-      : 'Вы не авторизованы'}
-  </PageTemplateProfiles>
+      : 
+      <div className="container">Вы не авторизованы</div>
+      }
+  </PageTemplate>
 )
 
 Profile.propTypes = {

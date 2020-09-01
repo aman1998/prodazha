@@ -1,5 +1,6 @@
 h1 {
   text-align: center;
+  color: #4C5D87;
 }
 
 .auth, .registr {
@@ -44,7 +45,7 @@ h1 {
   box-sizing: border-box;
   width: 100%;
   border-radius: 4px;
-  border: 1px solid rgb(26, 24, 24);
+  border: 1px solid #4C5D87;
   padding: 10px 15px;
   margin-bottom: 10px;
   font-size: 14px;
