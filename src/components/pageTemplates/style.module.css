@@ -6,8 +6,13 @@ main {
   margin-top: 10px;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1000px) {
   .content {
     margin-left: 200px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content {
+    margin-left: 0px;
   }
 }

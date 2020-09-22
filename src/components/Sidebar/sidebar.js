@@ -8,8 +8,9 @@ import { showLogin } from '../../store/actions'
 const Sidebar = () => {
   const [redirect, setRedirect] = React.useState(false)
 
-  const  { token } = useSelector(state => ({
-    token: state.auth.token
+  const  { token, sidebar } = useSelector(state => ({
+    token: state.auth.token,
+    // sidebar: state.sidebar,
   }))
 
   const dispatch = useDispatch()
@@ -42,7 +43,7 @@ const Sidebar = () => {
 
   return (
     <nav className={styles.sidebar}>
-      <div className={styles.sidebarTitle}>Sales</div>
+      {sidebar ? <div className={styles.sidebarTitle}>Sales</div> : ''}
       <ul className={styles.sidebar['__items']}>
           {
                         sidebarItem.map((item) => (

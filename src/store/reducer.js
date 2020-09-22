@@ -1,6 +1,7 @@
 const initilalState = {
   login: false,
   edit: false,
+  sidebar: true,
   search: '',
 }
 
@@ -20,6 +21,11 @@ const reducer = (state = initilalState, action) => {
       return {
         ...state,
         edit: action.edit,
+      }
+    case 'SHOW_SIDEBAR':
+      return {
+        ...state,
+        edit: action.sidebar,
       }
     default:
       return state

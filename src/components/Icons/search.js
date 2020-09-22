@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './icons.module.css'
 
-let Search = () => {
+let Search = ({color}) => {
 	return(
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1"  id="Capa_1" height='20px' width='20px' fill='currentColor' xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	viewBox="0 0 511.999 511.999" className={styles.search} xmlSpace="preserve">
 <g>
 	<g>

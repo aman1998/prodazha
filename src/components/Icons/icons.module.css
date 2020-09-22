@@ -1,8 +1,8 @@
-.search {
+/* .search {
     width: 17px;
     height: 17px;
     fill: #fff;
-}
+} */
 
 .user, .profile, .list, .phone, .icon {
     margin-right: 5px;
@@ -11,7 +11,9 @@
 }
 
 .user {
-    fill: #4C5D87;;
+    width: 23px;
+    height: 23px;
+    fill: #4C5D87;
 }
 
 .heart, .message, .list, .profile, .delete, .phone {
@@ -45,9 +47,9 @@
     fill: rgb(30, 31, 27);
 }
 
-.user:hover{
-    fill: rgb(143, 130, 130);;
-}
+/* .user:hover{
+    fill: rgb(119, 129, 223);
+} */
 
 .icon:hover {
     fill: rgb(87, 83, 78);

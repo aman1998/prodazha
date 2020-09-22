@@ -3,7 +3,7 @@ import styles from './icons.module.css'
 
 let User = () => {
 	return(
-		<svg version="1.1" id="Capa_1" className={styles.user} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		<svg version="1.1" id="Capa_1" className={styles.user} fill='currentColor' xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				width="30.711px" height="30.711px" viewBox="0 0 30.711 30.711" xmlSpace="preserve">
 			<g>
 				<path d="M19.008,18.814c1.055-1.071,1.836-2.51,2.301-3.886c0.637-0.262,1.156-0.912,1.354-1.701
