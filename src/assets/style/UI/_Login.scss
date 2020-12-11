@@ -1,0 +1,75 @@
+.login{
+  background: #5c5e66;
+  max-width: 414px;
+  width: 100%;
+  border-radius: 6px;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  &HeaderContent {
+    text-align: center;
+    padding: 30px 20px 0px 20px;
+    font-size: 15px;
+    img {
+      width: 60px;
+      height: 60px;
+    }
+    div {
+      &:nth-child(3) {
+        color: #aca7a7;
+        font-size: 11px;
+        margin: 5px 15px 30px 15px;
+      }
+    }
+  }
+  &Header{
+    text-transform: uppercase;
+    font-size: 11px;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    padding: 6px 14px;
+    justify-content: space-between;
+  }
+  &Form {
+    padding: 0 20px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    input {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+    }
+    &Btn {
+      color: inherit;
+      margin-top: 10px;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+      border-radius: 6px;
+      &:hover {
+        background: #004ce6;
+      }
+    }
+  }
+  .cancel {
+    cursor: pointer;
+  }
+  .cancel:hover {
+    color: rgb(56, 53, 53);
+  }
+  .error {
+    display: block;
+    margin-top: 0px;
+    font-size: 12px;
+    color: #D8000C;
+    font-style: italic;
+  }
+}

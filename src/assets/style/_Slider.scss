@@ -1,0 +1,35 @@
+@import "./templates";
+.slider{
+  width: 100%;
+  .container{
+    width: 80%;
+  }
+}
+.slide{
+  position: relative;
+  height: 60vh;
+  @include flexCenter;
+  .img{
+    width: 100%;
+    opacity: 0.6;
+    transition: 0.5s;
+  }
+  .content{
+    position: absolute;
+    width: 50%;
+    top: 40%;
+    left: 20%;
+    z-index: 10;
+    h1{
+
+    }
+    h3{
+
+    }
+  }
+  &:hover{
+    .img{
+      opacity: 0.8;
+    }
+  }
+}

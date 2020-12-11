@@ -1,0 +1,82 @@
+@import './variables';
+@import './templates';
+
+header {
+  border-bottom: 1px solid $lineColor;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  .block {
+    @include flexSpaceBetween;
+    align-items: center;
+    padding: 10px 0;
+    color: #f2f2f2;
+    .active {
+      color: #b3b3b3;
+    }
+    &Left {
+      display: flex;
+      align-items: center;
+      .items{
+        width: fit-content;
+      }
+      .line-vert{
+        width: 1px;
+        height: 30px;
+        background-color: $lineColor;
+        margin: 0 20px;
+      }
+    }
+    &Right{
+      display: flex;
+      justify-content: space-between;
+      width: 250px;
+      .items {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+      }
+      .itemsLogin {
+        @include flexCenter;
+        padding: 6px 16px;
+        background: #0054ff;
+        transition: 0.4s;
+        border-radius: 4px;
+        cursor: pointer;
+        &:hover {
+          background: #0f60ff;
+        }
+      }
+      .register{
+        background: linear-gradient(120.85deg,#48c691 14.07%,#26835f 93.02%);
+        &:hover{
+          background: linear-gradient(200.85deg, #48c691 14.07%, #26835f 93%);
+        }
+      }
+      .loginUserInfo{
+        display: flex;
+        @include flexCenter;
+        box-sizing: border-box;
+        .username{
+          margin-right: 20px;
+        }
+        .userMoney{
+          margin-left: 20px;
+          color: #F7B900;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          .moneyText{
+            margin-left: 6px;
+          }
+        }
+        .userAvatar{
+          width: 45px;
+          .avatar{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

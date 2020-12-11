@@ -1,0 +1,98 @@
+@import './variables';
+
+.wrapper {
+  padding: 10px 0;
+  .block {
+    margin-top: 20px;
+    height: auto;
+    padding: 15px 0;
+    background: linear-gradient(172.87deg,rgb(35, 37, 37),#8f9094);
+    transition: 0.4s;
+    cursor: pointer;
+    .event {
+      display: flex;
+      height: 152px;
+      color: #f2f2f2;
+      font-size: 14px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      .avatar {
+        height: 100%;
+        width: 152px;
+        object-fit: cover;
+        margin-right: 20px;
+        border-radius: 20px;
+        box-shadow: 0 6px 32px rgba(0, 0, 0, 0.534);
+      }
+      &-content {
+        display: flex;
+        font-size: 18px;
+        width: 100%;
+        .info {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          &-bottom {
+            &__rule {
+              display: none;
+              font-size: 12px;
+              transition: 0.4s;
+              span {
+                color: $lineColor;
+              }
+            }
+            &__btn {
+              margin-top: 10px;
+              padding: 10px 12px;
+              width: 185px;
+              background: linear-gradient(172.87deg,#0af,#002aff);
+              cursor: pointer;
+              border-radius: 6px;
+              font-size: 14px;
+            }
+          }
+          &-top {
+            &__date {
+              font-size: 14px;
+            }
+          }
+        }
+        .info2 {
+          width: 100%;
+          margin-left: 150px;
+          &-top {
+            display: flex;
+            justify-content: space-between;
+            div {
+              &:nth-child(1) {
+                display: flex;
+              }
+            }
+            .percent {
+              margin-left: 100px;
+            }
+            &__price {
+              display: flex;
+              flex-direction: column;
+              div {
+                &:nth-child(2) {
+                  color: rgb(34, 26, 26);
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &:hover {
+      border-bottom: 0px solid rgb(7, 7, 49);
+      border-top: 0px solid rgb(7, 7, 49);
+      box-shadow: 0 6px 32px rgba(0, 0, 0, 0.534);
+      .info-bottom__rule {
+        display: block;
+      }
+    }
+  }
+}

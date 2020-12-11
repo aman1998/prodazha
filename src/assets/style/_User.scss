@@ -1,0 +1,45 @@
+.block{
+  &User {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    &>div {
+      display: flex;
+      align-items: center;
+    }
+    .avatar {
+      width: 50px;
+      height: 50px;
+      background: rgba(121, 114, 114, 0.89);
+      border-radius: 50%;
+      margin-right: 30px;
+    }
+    .results {
+      color: #5c5e66;
+      font-size: 15px;
+      .item {
+        margin-right: 40px;
+        &:nth-child(1) {
+          margin-right: 70px;
+        }
+        p {
+          &:nth-child(1) {
+            font-size: 15px;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.nav{
+  margin-top: 20px;
+  &Item{
+    margin-right: 20px;
+  }
+  .active{
+    color: #5c5e66;
+  }
+}
