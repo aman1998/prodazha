@@ -1,0 +1,66 @@
+.profiles__container, .user__container {
+    width: 100%;
+    margin-top: 0;
+    padding-left: 10px;
+}
+
+.users {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-template-rows: 80px;
+    margin-top: 10px;
+    grid-gap: 10px;
+    width: 100%;
+    padding: 0 10px;
+    font-size: 15px;
+    border: 1px solid #000;
+}
+
+.users div {
+    text-align: center;
+}
+
+.user__title {
+    margin-bottom: 5px;
+}
+.profile{
+    display: flex;
+    margin-top: 10px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    background: grey;
+}
+
+.avatars {
+    height: 50px;
+    width: 100%;
+    object-fit: cover;
+    background: grey;
+}
+
+.signOut{
+    margin-top: 10px;
+}
+
+.label input {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .users{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .users{
+        grid-template-columns: 1fr 1fr ;
+        grid-template-rows: 1fr ;
+    }
+}
+
+

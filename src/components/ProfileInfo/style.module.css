@@ -1,0 +1,35 @@
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 8px 12px;
+  background:  rgba(94, 99, 100, 0.884);
+  border-radius: 5px;
+  transition: .5s;
+  border: none;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #52779bd0;
+  opacity: 1;
+}
+
+.profileBtn {
+  display: flex;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .profileBtn {
+    flex-direction: column;
+  }
+  .profileBtn div {
+    margin-top: 5px;
+  }
+}

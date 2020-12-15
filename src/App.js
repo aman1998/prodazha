@@ -1,24 +1,36 @@
-import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Home from './pages/HomePage'
+import Login from './pages/Login'
+import Profile from './pages/ProfilePage'
+import ProfileList from './pages/ProfilePage/myList'
+import ProfileFavorites from './pages/ProfilePage/favorites' 
+import ProfileUsers from './pages/ProfilePage/users' 
+import Add from './pages/AddPage'
+import Electronics from './pages/Subpages/electronics'
+import Household from './pages/Subpages/household'
+import Clothing from './pages/Subpages/clothing'
+import Cars from './pages/Subpages/cars'
+import Property from './pages/Subpages/property'
 import { useSelector, useDispatch } from 'react-redux'
-import MainPage from './pages/Home'
-import ProfilePage from './pages/Profile'
-import {getMyProfile as getProfileAction} from '../src/store/actions1'
+import { getMyProfile as getMyProfileAction,  getSales as getSalesAction} from './store/actions1'
 
-import './assets/style/style.scss'
+const ENDOPOINT = 'https://intense-journey-98977.herokuapp.com'
+// const ENDOPOINT = 'http://localhost:1717'
 
-const ENDOPOINT = 'http://localhost:1717'
 
-function App() {
-
-  const { token, profile } = useSelector(state => ({
+const App = () => {
+  const { token, edit, success } = useSelector(
+    (state) => ({
+      edit: state.reducer.edit,
       token: state.auth.token,
-      profile: state.auth.profile,
+      success: state.sales.get.success,
     }))
-
   const dispatch = useDispatch()
 
   React.useEffect(() => {
+    const getSales = () => dispatch(getSalesAction())
+    if (!success) getSales()
     if (token) {
       fetch(`${ENDOPOINT}/profile`, {
         method: 'GET',
@@ -26,19 +38,27 @@ function App() {
       })
         .then((response) => response.json())
         .then(({ data }) => {
-          dispatch(getProfileAction(data))
+          const getMyProfile = (profile) => dispatch(getMyProfileAction(profile))
+          getMyProfile(data)
+          // console.log(data)
         })
     }
-  }, [])
-  
+  }, [token, edit, dispatch, success])
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/prodazha'>
       <Switch>
-        <Route path='/' component={MainPage} exact/>
-        <Route path='/profile' component={ProfilePage} exact/>
-        <Route path = '/profile/settings' component = {ProfilePage} exact/>
-        <Route path = '/profile/cardIn' component = {ProfilePage} exact/>
-        <Route path = '/profile/cardOut' component = {ProfilePage} exact/>
+        <Route path='/' component={Home} exact/>
+        <Route path='/login' component={Login} exact/>
+        <Route path='/profile' component={Profile} exact/>
+        <Route path='/add' component={Add} exact/>
+        <Route path='/electronics' component={Electronics} exact/>
+        <Route path='/household' component={Household} exact/>
+        <Route path='/clothes' component={Clothing} exact/>
+        <Route path='/cars' component={Cars} exact/>
+        <Route path='/property' component={Property} exact/>
+        <Route path='/list' component={ProfileList} exact/>
+        <Route path='/favorites' component={ProfileFavorites} exact/>
+        <Route path='/users' component={ProfileUsers} exact/>
       </Switch>
     </BrowserRouter>
   )

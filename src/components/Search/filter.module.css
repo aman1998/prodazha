@@ -1,0 +1,39 @@
+.form {
+    display: flex;
+    /* margin-left: 100px; */
+}
+
+.form input, .form div {
+    height: 35px;
+    outline: none;
+    border: none;
+}
+
+.form input {
+    padding: 0 10px;
+    width: 250px;
+    border-radius: 10px 0 0 10px;
+}
+
+.form div {
+    display: flex;
+    align-items: center;
+    background: #305996d0;
+    border-radius: 0 10px 10px 0;
+    transition: .5s;
+    padding: 0 10px;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .form input {
+        margin-top: 10px;
+        width: 100%;
+    }
+    .form div {
+        margin-top: 10px;
+    }
+}
+
+
+

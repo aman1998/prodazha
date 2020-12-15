@@ -1,0 +1,15 @@
+.icons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.icons div:nth-child(1) {
+  display: flex;
+}
+
+.delete {
+  margin-right: 10px;
+}
+
